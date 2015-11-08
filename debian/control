@@ -1,0 +1,9 @@
+Package: bash-glory
+Version: 0.0.1
+Section: libraries
+Priority: optional
+Architecture: all
+Depends: apt (>= 0.6.46.4)
+Maintainer: Jeff Anderson <jadeaxon@hotmail.com>
+Description: General Bash libraries
+ This package contains general Bash library code.
