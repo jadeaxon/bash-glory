@@ -5,6 +5,11 @@
 # This is how you create the encrypted properties file:
 # openssl enc -aes-256-cbc -salt -in temp.properties -out ~/.properties.enc -pass file:~/.ssh/properties.key
 
+
+#==============================================================================
+# Functions
+#==============================================================================
+
 # Emits the value of the given property on stdout.
 # Consults ~/.properties then ~/.properties.enc.
 # Uses ~/.ssh/properties.key to decrypt ~/.properties.enc.
@@ -48,16 +53,25 @@ property() {
 
 
 #==============================================================================
-# Test
+# Tests
 #==============================================================================
 
-property 
-echo
-property DNE default
-echo
-property name.first
-echo
-property SECRET
+# Tests this library.
+properties__test() {
+	property 
+	echo
+	property DNE default
+	echo
+	property name.first
+	echo
+	property SECRET
+}
+
+
+# Only run tests when script is being run directly, not sourced.
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+	properties__test
+fi
 
 
 
