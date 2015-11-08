@@ -8,11 +8,11 @@
 #==============================================================================
 
 # Prints the name of a variable and its value.
+# E.g., dv HOME
 dv() {
-	local var=$1
-	local temp='$'"$var"
-	eval "value=$temp"
-	echo "$var = $value"
+	local variable="$1"
+	eval value=\$$variable
+	echo "$variable = $value"
 }
 
 
