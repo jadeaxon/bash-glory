@@ -1,7 +1,12 @@
 # bash-glory
 My Bash library.
 
-To use:
+## Installation
+```
+./install.sh
+```
+
+## Usage
 ```
 source /usr/share/lib/bash-glory/<library>.sh
 ```
