@@ -4,6 +4,10 @@
 # Functions
 #==============================================================================
 
+#------------------------------------------------------------------------------
+# Build
+#------------------------------------------------------------------------------
+
 # Deploys the latest Debian pkg available in project to target CM/SPS /root/packages.
 # PRE: You are in a project dir that has a debian/ subfolder. 
 # PRE: The project dir contains a build.sh which builds its Debian pkg in the debian/ subfolder.
@@ -80,6 +84,10 @@ a() {
 }
 
 
+#------------------------------------------------------------------------------
+# Source Control
+#------------------------------------------------------------------------------
+
 # Reports either SVN or Git status.
 svn_or_git_status() {
 	if [ -d .svn ]; then
@@ -102,8 +110,21 @@ svn_or_git_status() {
 		echo "svn_or_git_status(): ERROR: You do not appear do be in either an SVN or Git repo."
 		return 1
 	fi
+} # svn_or_git_status()
 
-}
+
+# Does a git pull.  Performs special gymnastics to route around home dir Bash history files.
+git_pull() {
+	if [ "$PWD" == "$HOME" ]; then
+		set +o history
+		git stash
+		git pull "$@"
+		git stash pop
+		set -o history
+	else # Normal git pull
+		git pull "$@"
+	fi
+} # git_pull()
 
 
 #==============================================================================
