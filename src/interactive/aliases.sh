@@ -525,4 +525,10 @@ alias sss='sync; sync; sync'
 # Make a clean shell for doing bitbake.
 alias bitbash='bash --rcfile ~/.bashrc_yocto'
 
-
+# thefuck is not supported on Cygwin.
+tfpath=$(which -p thefuck-alias)
+if [ -z "$CYGWIN" ]; then
+	if [ -x "$tfpath" ]; then
+		eval "$(thefuck-alias fix)"
+	fi
+fi
