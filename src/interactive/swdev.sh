@@ -80,6 +80,32 @@ a() {
 }
 
 
+# Reports either SVN or Git status.
+svn_or_git_status() {
+	if [ -d .svn ]; then
+		svn status
+	elif [ -d ../.svn ]; then
+		svn status
+	elif [ -d ../../.svn ]; then 
+		svn status
+	elif [ -d ../../../.svn ]; then
+		svn status
+	elif [ -d .git ]; then
+		git status
+	elif [ -d ../.git ]; then
+		git status
+	elif [ -d ../../.git ]; then
+		git status
+	elif [ -d ../../../.git ]; then
+		git status
+	else
+		echo "svn_or_git_status(): ERROR: You do not appear do be in either an SVN or Git repo."
+		return 1
+	fi
+
+}
+
+
 #==============================================================================
 # Tests
 #==============================================================================
