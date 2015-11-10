@@ -109,6 +109,31 @@ mount() {
 } # mount()
 
 
+# Mounts the LFS thumbdrive.
+# () causes code to run in a subshell.  This allows us to use set -e (it exits current shell).
+# PRE: You are root.
+mount_LFS() {(
+    set -e
+    local boot root
+
+    root=$(blkid|grep LFS_root|cut -f1 -d':')
+    boot=$(blkid|grep LFS_boot|cut -f1 -d':')
+    if [ -z "$root" ]; then
+        echo "mount_LFS: ERROR: LFS_root DNE."; exit 1
+    fi
+    if [ -z "$boot" ]; then
+        echo "mount_LFS: ERROR: LFS_boot DNE."; exit 1
+    fi
+
+    umount /media/janderson/LFS_boot || true
+    umount /media/janderson/LFS_root || true
+    mount /dev/sdb1 /mnt/LFS
+    mount /dev/sdb2 /mnt/LFS/boot
+    mount | grep LFS
+    set +e
+)} # mount_LFS()
+
+
 #==============================================================================
 # Tests
 #==============================================================================
