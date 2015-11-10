@@ -63,6 +63,25 @@ unique_classpath() {
 }
 
 
+# Tests whether the given variable is defined.
+defined() {
+	local variable="$1"
+	local defined
+	eval defined=\${$variable+default}
+	if [ "$defined" ]; then
+		return 0
+	else # Not defined.
+		return 1
+	fi
+} # defined()
+
+
+# Tests whether the given variable in undefined.
+undefined() {
+	! defined "$@"
+}
+
+
 #===============================================================================
 # Tests
 #===============================================================================
