@@ -44,6 +44,20 @@ backup() {
 } # backup()
 
 
+# Either prints out the absolute path of a file, or print the PATH env var in a line-by-line form.
+# path() { # For some reason, my Linux VM chokes on this style of function declaration just here.
+function path {
+	if [ "$1" ]; then
+		# Echo the absolute path of the give file.
+		readlink -f "$1"
+	else # No arg.
+		# Print PATH env var to stdout line-by-line.
+		echo $PATH | perl -pe 's/:/\n/g'
+	fi
+
+}
+
+
 #------------------------------------------------------------------------------------------------------------------
 # Mounting
 #------------------------------------------------------------------------------------------------------------------
