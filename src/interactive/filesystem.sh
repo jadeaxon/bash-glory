@@ -44,6 +44,28 @@ backup() {
 } # backup()
 
 
+# tar, jar, etc. aliases
+# alias tx='tar xvzf' # Extract your typical .tar.gz or .tgz file.
+# tx() { # For some reason my VM chokes on this style of function declaration just here.
+function tx {
+	targz='[.]tar[.]gz$'
+	tgz='[.]tgz$'
+	tarbz2='[.]tar[.]bz2$'
+
+	if [[ "$1" =~ $targz ]]; then
+		tar xzvf "$1"
+	elif [[ "$1" =~ $tgz ]]; then
+		tar xzvf "$1"
+	elif [[ "$1" =~ $tarbz2 ]]; then
+		tar xjvf "$1"
+	else
+		# The -a option is supposed to automatically determine compression program by file extension.
+		tar xavf "$1"
+		# echo "tx: Unknown file extension $(extension $1)."
+	fi
+} # end tx()
+
+
 # Either prints out the absolute path of a file, or print the PATH env var in a line-by-line form.
 # path() { # For some reason, my Linux VM chokes on this style of function declaration just here.
 function path {
@@ -59,8 +81,154 @@ function path {
 
 
 #------------------------------------------------------------------------------------------------------------------
+# Navigation
+#------------------------------------------------------------------------------------------------------------------
+
+# The cd function replaces the builtin command of the same name. The function uses the builtin command 
+# pushd to change the directory and store the new directory on DIRSTACK. If no directory is given, pushd uses 
+# $HOME. If changing the directory fails, cd prints an error message, and the function returns with a failing exit 
+# code (see Listing 11-1). 
+# Change directory, storing new directory on DIRSTACK 
+cd() { 
+	# Preserve natural behavior of 'cd -'
+	if [[ "$1" == '-' ]]; then
+		builtin cd -
+		return
+	fi
+ 
+
+	# Variables for directory and return code.
+    local dir 
+	local error 
+ 
+
+    # Ignore all options.
+	# NOTE: Rarely do you ever need an option of the cd builtin.
+	# If you do, use 'builtin' to call it.'
+    while true; do                                    
+        case $1 in
+            --) break ;; 
+            -*) shift ;; 
+            *) break ;; 
+        esac 
+    done 
+ 
+    dir=$1
+
+	# If given a file, cd to that file's directory.
+	if [ -f "$dir" ]; then
+		dir=$(dirname "$dir")
+	fi
+
+	# If a $dir is not empty. 
+    if [ -n "$dir" ]; then 
+		# pushd changes to given directory and saves current directory on DIRSTACK
+        pushd "$dir"                      
+    else 
+        pushd "$HOME"                    
+    fi 2>/dev/null                    
+	# Error message should come from built-in cd (below), not pushd 
+ 
+    error=$? # Store pushd's exit code. 
+  
+    if [ $error -ne 0 ]; then 
+		# Let the builtin cd provide the error message.
+        builtin cd "$dir"            
+
+    fi 
+
+    return "$error"                 
+	
+	# The standard output is redirected to the bit bucket because pushd prints the contents of DIRSTACK, 
+	# and the only other output is sent to standard error (>&2). 
+} > /dev/null # cd()
+ 
+
+# Backtrack along visited directory stack, DIRSTACK (kind of like browser history).
+pd() {
+	popd
+
+} > /dev/null
+
+
+back() {
+	popd
+} > /dev/null
+
+
+# cd to given directory and then list it.
+# Aliased to '.l'.
+cd_and_list() {
+	cd "$1"
+	my_ls
+}
+
+
+# Change directory to arg if a directory.
+# Cat arg(s) if first is a file.
+# Meant to be used with 'c' as an alias for it.
+cd_or_cat() {
+	if [ -d "$1" ]; then
+		cd "$1"
+	else # I'm a file, not a doctor, Jim.
+		cat "$@"
+	fi
+}
+
+
+# Show a menu of directories you've visited.
+cdm() { 
+    local dir IFS=$'\n' item 
+	# loop through diretories in DIRSTACK[@] 
+    for dir in $(dirs -l -p); do 
+		# skip current directory 
+        [ "$dir" = "$PWD" ] && continue     
+        case ${item[*]} in 
+			# $dir already in array; do nothing 
+            *"$dir:"*) ;;  
+            *) item+=( "$dir:cd '$dir'" ) ;; # add $dir to array 
+        esac 
+    done 
+	# pass array to menu function 
+    menu "${item[@]}" Quit:                            
+} # cdm()
+
+
+# Calls the ls command.  When it gets passed for than 1 argument, it
+# does not expand directory contents.  With 0 or 1 arguments, it does.
+my_ls() {
+	# echo "arg count: $#"
+    if [ $# -gt 1 ]; then
+		ls -ladhF --color "$@"
+	else
+		ls -lahF --color "$@"
+	fi
+
+} # my_ls()
+
+
+# Reports what a command resolves to including builtins, aliases, functions, and exectuable files.
+which() {
+	type -a $@
+} # which
+export -f which
+
+
+#------------------------------------------------------------------------------------------------------------------
 # Mounting
 #------------------------------------------------------------------------------------------------------------------
+
+# Lists all mounts nicely formatted if called with no args.  Otherwise, runs normal mount command.
+mount() {
+	if (( $# == 0 )); then
+		# List all mounts in nice columns.
+		command mount | column -t
+	else
+		# There are args, so do a normal mount command.
+		command mount "$@"
+	fi
+} # mount()
+
 
 mount_maxheadroom() {
 	mount -t cifs //maxheadroom.digecor.net/shares -o username=janderson,password=mypassword /mnt/maxheadroom/shares
