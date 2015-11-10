@@ -224,6 +224,39 @@ clear_logs() {
 }
 
 
+#------------------------------------------------------------------------------------------------------------------
+# NV/Linux Development
+#------------------------------------------------------------------------------------------------------------------
+
+# Checks what type of ARM exectuable a given file is.
+arm_type() { 
+	if [ 1 -gt $# ] ; then 
+		echo "Usage: $0 <eabi-executable>"
+	else
+		atype=$(readelf -h $1 | grep Machine:)
+		if [ "x$atype" = "x" ] ; then 
+			echo "'$1' is not an ELF"
+		else mach=$(echo $atype | grep ARM)
+			if [ "x$mach" = "x" ] ; then 
+				echo "'$1' is not an ARM executable"
+			else 
+				atype=$(readelf -A $1 | grep Tag_ABI_VFP_args)
+				if [ "x$atype" != "x" ]; then
+					echo "'$1' uses hard-float, vfp (armhf)"
+				else 
+					atype=$(readelf -A $1 | grep NEON)
+					if [ "x$atype" = "x" ] ; then 
+						echo "'$1' uses soft-float (armel)"
+					else 
+						echo "'$1' uses hard-float, neon (armhf)"
+					fi
+				fi
+			fi
+		fi
+	fi 
+} # arm_type()
+
+
 #==============================================================================
 # Tests
 #==============================================================================
