@@ -225,6 +225,7 @@ alias vkh='vim ~/.ssh/known_hosts'
 alias wrap='fmt' # Wraps long text lines.
 alias tab2space='expand --tabs=4' # Expand tabs to spaces.
 alias tf='tail -f' # Follow logs as they are written to.
+alias tgf='test-server.sh | grep ^FAIL'
 alias ~='cd ~'
 alias c:='cd /cygdrive/c'
 alias C:='cd /cygdrive/c'
