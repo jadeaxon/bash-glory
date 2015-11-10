@@ -134,6 +134,96 @@ git_pull() {
 } # git_pull()
 
 
+#------------------------------------------------------------------------------------------------------------------
+# digEplayer L7/L10
+#------------------------------------------------------------------------------------------------------------------
+
+# Is the machine we are running on a digEplayer?
+is_digEplayer() {
+	if [ -f /usr/local/bin/player_type ]; then
+		return 0 # Inverted logic.
+	fi
+	return 1
+}
+
+
+# Sets the PLAYER_TYPE environment variable to whichever type of digEplayer this code is running on.
+initialize_player_type() {
+    if is_digEplayer; then
+        PLAYER_TYPE=$(player_type)
+    else # This is not a digEplayer.
+        PLAYER_TYPE="not"
+    fi
+}
+
+
+# Is this machine a digEplayer L7?
+is_L7() {
+	if [ "$PLAYER_TYPE" == "L7" ]; then
+		true
+	else
+		false
+	fi
+}
+
+# Is this machine a digEplayer L10?
+is_L10() { 
+	if [ "$PLAYER_TYPE" == "L10" ]; then
+		true
+	else
+		false
+	fi
+}
+
+
+# Setup the content devmapper device and mount it to /mnt/L10/content.
+# Extracted from /usr/sbin/bootstrap.
+# PRE: You are NFS booted on a player.
+setup_content_device() {
+    cdevs=(
+        # device node   sysfs entry
+        "/dev/sda3  /sys/block/sda/sda3"
+        "/dev/mmcblk0p1 /sys/block/mmcblk0/mmcblk0p1"
+    )
+
+    table=""
+    total=0
+    for cdev in "${cdevs[@]}"; do
+        # Each entry in table is a size 2 list.
+        cdev=($cdev)
+        if [ -e ${cdev[1]} ]; then
+            dev=${cdev[0]}
+            size=$(< ${cdev[1]}/size)
+            table="$table\n$total $size linear $dev 0"
+            let total+=$size
+        fi
+    done
+    echo -e "$table" | dmsetup create content
+
+	# mount -t ext2 /dev/mapper/content /mnt/$PLAYER_TYPE/content
+
+} # setup_content_device()
+
+
+# Start digemenu again.
+dm() {
+    killall digemenu
+    killall digeoverlay
+    cd /opt/gstreamer_demo/omap3530
+    digeoverlay &
+    digemenu -lll &
+    cd -
+}
+
+
+# Truncates all the .log files in /var/log.
+clear_logs() {
+	for f in /var/log/*.log; do
+		> $f
+	done
+}
+
+
 #==============================================================================
 # Tests
 #==============================================================================
