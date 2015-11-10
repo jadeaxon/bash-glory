@@ -214,6 +214,18 @@ which() {
 export -f which
 
 
+# Lists a directory as a single column of filenames.
+list_single_column() {
+	if [ -z "$1" ]; then
+		ls -1Ad .* * | pcregrep -v "^[.]{1,2}$" # List files as a single column with just the filename.
+	elif [ -d "$1" ]; then
+		ls -1A "$@" | pcregrep -v "^[.]{1,2}$"
+	else # Args.
+		ls -1Ad "$@" | pcregrep -v "^[.]{1,2}$"
+	fi
+}
+
+
 #------------------------------------------------------------------------------------------------------------------
 # Mounting
 #------------------------------------------------------------------------------------------------------------------
