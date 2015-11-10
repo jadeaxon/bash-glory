@@ -66,6 +66,18 @@ function tx {
 } # end tx()
 
 
+# Function that will help us say tc <directory> to create <directory>.tgz.
+create_tgz() {
+	if [ -d "$1" ]; then
+		dir=${1%/} # Remove trailing /.
+		tar czvf $dir.tgz $dir/
+	else
+		echo "create_tgz(): Argument must be a single directory."
+	fi
+
+} # create_tgz()
+
+
 # Either prints out the absolute path of a file, or print the PATH env var in a line-by-line form.
 # path() { # For some reason, my Linux VM chokes on this style of function declaration just here.
 function path {
