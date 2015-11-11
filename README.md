@@ -42,6 +42,6 @@ source /usr/share/lib/bash-glory/<library>.sh
 * swdev.sh
 * vim.sh
 * windows.sh
-* www.sh
+* [www.sh](https://github.com/jadeaxon/bash-glory/blob/master/src/interactive/www.sh)
 
 
