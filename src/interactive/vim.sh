@@ -41,7 +41,10 @@ setup_vim() {
 	rm -rf syntastic	
 	git clone https://github.com/scrooloose/syntastic.git
 	cd -
+
+	mkdir -p ~/tmp/vim
 } # setup_vim()
+
 
 #==============================================================================
 # Tests
