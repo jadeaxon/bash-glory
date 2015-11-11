@@ -6,41 +6,37 @@
 
 # Initializes the Bash prompt.
 init_prompt() {
-	# Set a better prompt for interactive Cygwin bash.
-	if [ -e /cygdrive/c ] && [ -n "$PS1" ]; then
-		PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
-		# \[\e]0;$WINDOWTITLE:\w\a\]
+	PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
+	# \[\e]0;$WINDOWTITLE:\w\a\]
 
-		# ANSI terminal control sequences for setting foreground text color.
-		black='\[\e[30m\]'
-		red='\[\e[31m\]'
-		green='\[\e[32m\]'
-		yellow='\[\e[33m\]'
-		blue='\[\e[34m\]'
-		magenta='\[\e[35m\]'
-		cyan='\[\e[36m\]'
-		white='\[\e[37m\]'
-		## init='\[\e]0;\w\a\]' # Not exactly sure what this is doing; the ]0 should probably be [0.
-		## init='\[\e]0;'$WINDOW_TITLE'\w\a\]'
-		if [ -z "$WINDOW_TITLE" ]; then
-			# If WINDOW_TITLE is blank, use the default of the working directory as the title.
-			# Not exactly sure what this is doing.  
-			# The \w adds the working directory to the window title.
-			init='\[\e]0;\w\a\]' 
-		else # We have explicitly defined a window title.
-			init='\[\e]0;'$WINDOW_TITLE'\a\]'
-		fi
-
-		reset='\[\e[0m\]' # Resets terminal to default settings.
-
-		# PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[34m\]!\! \[\e[35m\]\T \[\e[0m\]\n\$ '
-		PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${reset}\n\$ "
-
-		# This would usually set the Cygwin window title to 'Title'.  However, as PS1 is defined, this 
-		# somehow overrides this.
-		# echo -e "\033]2;Title\007"
-
+	# ANSI terminal control sequences for setting foreground text color.
+	black='\[\e[30m\]'
+	red='\[\e[31m\]'
+	green='\[\e[32m\]'
+	yellow='\[\e[33m\]'
+	blue='\[\e[34m\]'
+	magenta='\[\e[35m\]'
+	cyan='\[\e[36m\]'
+	white='\[\e[37m\]'
+	## init='\[\e]0;\w\a\]' # Not exactly sure what this is doing; the ]0 should probably be [0.
+	## init='\[\e]0;'$WINDOW_TITLE'\w\a\]'
+	if [ -z "$WINDOW_TITLE" ]; then
+		# If WINDOW_TITLE is blank, use the default of the working directory as the title.
+		# Not exactly sure what this is doing.  
+		# The \w adds the working directory to the window title.
+		init='\[\e]0;\w\a\]' 
+	else # We have explicitly defined a window title.
+		init='\[\e]0;'$WINDOW_TITLE'\a\]'
 	fi
+
+	reset='\[\e[0m\]' # Resets terminal to default settings.
+
+	# PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[34m\]!\! \[\e[35m\]\T \[\e[0m\]\n\$ '
+	PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${reset}\n\$ "
+
+	# This would usually set the Cygwin window title to 'Title'.  However, as PS1 is defined, this 
+	# somehow overrides this.
+	# echo -e "\033]2;Title\007"
 
 } # init_prompt()
 
