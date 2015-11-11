@@ -20,8 +20,9 @@ all:
 	cp -p ./prerm $(build)/DEBIAN/
 	
 	# Stage package contents.
-	mkdir -p $(build)$(deploy_dir)
+	mkdir -p $(build)$(deploy_dir)/interactive
 	cp -p ../src/*.sh $(build)$(deploy_dir)
+	cp -p ../src/interactive/*.sh $(build)$(deploy_dir)/interactive
 
 	# Build the .deb package.
 	fakeroot chown -R root:root $(build)
