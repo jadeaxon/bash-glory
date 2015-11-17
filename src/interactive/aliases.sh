@@ -191,6 +191,7 @@ alias SB='S build.digecor.com'
 alias SB2='S jenkins@build2.digecor.com' # NV build server.
 alias Sn='S root@nv' # NV/Linux dev board.
 alias S7='S $L'
+alias SL='S $L'
 alias SB7='S build-L7'
 alias Sd='S dropbox'
 alias Ss='S silverboy-sp1'
@@ -257,6 +258,7 @@ if [ -f ~/.bashrc_jeff ]; then
     alias v.b='vim ~/.bashrc_jeff'
 fi
 alias c.b='git add ~/.bashrc; git commit'
+alias v.a='vim ~/projects/bash-glory/src/interactive/aliases.sh'
 
 alias v.i='vim ~/.inputrc'
 
