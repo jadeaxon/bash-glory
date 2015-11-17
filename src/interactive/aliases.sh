@@ -22,6 +22,7 @@ alias G='query_google'
 
 alias td='todo'
 alias t='todo'
+alias @W='send_waiting_e-mail'
 
 alias .m='cdm'
 
