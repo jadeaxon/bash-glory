@@ -187,6 +187,7 @@ alias St2='S tinman-sp2'
 alias St3='S tinman-sp3'
 alias Sb='S bronzeboy-sp1'
 alias Sg='S glide-mothership.digecor.com'
+alias Sg2='S goldenboy-sp2'
 alias SB='S build.digecor.com'
 alias SB2='S jenkins@build2.digecor.com' # NV build server.
 alias Sn='S root@nv' # NV/Linux dev board.
@@ -203,6 +204,7 @@ alias C='scp'
 alias CJ='scp_to_desktop'
 
 alias R='rsync'
+alias Rp='rsync -avz --partial --progress'
 
 # Set up ssh agent so that we can automatically log onto and copy files to/from any machine
 # that has our public key as an authorized key.
@@ -522,7 +524,7 @@ alias rbn='printf "RBN\n" > /dev/ttyACM0'
 alias rbf='printf "RBF\n" > /dev/ttyACM0'
 
 # Really sync. 
-alias sss='sync; sync; sync'
+alias sss='sync; sleep 1; sync; sleep 1; sync'
 
 # NV dev.  Yocto, bitbake, etc.
 # Make a clean shell for doing bitbake.
