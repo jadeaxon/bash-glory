@@ -217,6 +217,11 @@ alias fe='foreach '
 
 alias pid='pgrep' # Process grep.  Lists all pids for running process names matching regexp.
 alias psg='ps aux|g' # Another process grep shorthand.
+
+# Switch between readline editing modes in Bash.
+alias sov='set -o vi'
+alias soe='set -o emacs'
+
 alias vi='vim'
 alias v='vim'
 if [ -e ~/.vimrc_jeff ]; then
