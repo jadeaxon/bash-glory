@@ -75,8 +75,8 @@ mounted() {
 # Mounts device to path only once (that is, if not mounted).
 # Creates mount point if DNE.
 mount-once() {
-	local path="$1"
-	local device="$2"
+	local device="$1"
+	local path="$2"
 	if ! mounted "$path"; then
 		mkdir -p "$path"
 		mount $device "$path"
