@@ -64,10 +64,23 @@ absolute_path() {
 	# This is more of a to do for the extension() function.
 } # absolute_path()
 
+
 # Return 0 if the given path is mounted.  Return 1 otherwise.
 mounted() {
 	local path="$1"
 	mount | grep -F "$path"	>& /dev/null
+}
+
+
+# Mounts device to path only once (that is, if not mounted).
+# Creates mount point if DNE.
+mount-once() {
+	local path="$1"
+	local device="$2"
+	if ! mounted "$path"; then
+		mkdir -p "$path"
+		mount $device "$path"
+	fi
 }
 
 
