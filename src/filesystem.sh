@@ -64,6 +64,12 @@ absolute_path() {
 	# This is more of a to do for the extension() function.
 } # absolute_path()
 
+# Return 0 if the given path is mounted.  Return 1 otherwise.
+mounted() {
+	local path="$1"
+	mount | grep -F "$path"	>& /dev/null
+}
+
 
 #=============================================================================
 # Tests
