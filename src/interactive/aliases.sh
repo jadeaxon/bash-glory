@@ -191,6 +191,7 @@ alias Sg2='S goldenboy-sp2'
 alias SB='S build.digecor.com'
 alias SB2='S jenkins@build2.digecor.com' # NV build server.
 alias Sn='S root@nv' # NV/Linux dev board.
+alias Snd='S dcor@nvdev' # NV/Linux dev VM.
 alias S7='S $L'
 alias SL='S $L'
 alias SB7='S build-L7'
