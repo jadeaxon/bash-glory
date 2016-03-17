@@ -158,6 +158,14 @@ do_default_action() {
 		dpkg -i "$@"
 	elif [ "$ext" == "ahk" ]; then
 		open_explorer "$@" # Launch script using Explorer assosciated app.
+	elif [ "$ext" == "mkv" ]; then
+		open_explorer "$@"
+	elif [ "$ext" == "mp4" ]; then
+		open_explorer "$@"
+	elif [ "$ext" == "wmv" ]; then
+		open_explorer "$@"
+	elif [ "$ext" == "webm" ]; then
+		open_explorer "$@"
 	else # It's not a directory and has no explicitly handled extension.
 		# The source builtin only processes the first arg.
 		for script in "$@"; do
