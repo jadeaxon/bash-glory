@@ -202,6 +202,7 @@ alias Sc='S cm'
 alias So='S oz-sp1'
 alias Sct='S tas-cm@cm'
 alias S3='S pi@pi3' # Raspberry Pi 3
+alias S2='S pi@pi2' # Raspberry Pi 2
 alias C='scp'
 alias CJ='scp_to_desktop'
 
