@@ -4,6 +4,12 @@
 
 set -e
 S=$(basename $0)
+cd ~
+
+if [ -d ~/.git ]; then
+	echo "$S: ERROR: This user's home directory has already been home-ized."
+	exit 1
+fi
 
 sudo apt-get install pcregrep
 sudo apt-get install fortune
@@ -21,7 +27,6 @@ git init
 git remote add origin git@github.com:jadeaxon/home.git
 git fetch
 git checkout -f -t origin/master
-
 
 echo "$S: You should now start a new shell."
 
