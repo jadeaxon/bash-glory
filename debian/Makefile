@@ -21,8 +21,10 @@ all:
 	
 	# Stage package contents.
 	mkdir -p $(build)$(deploy_dir)/interactive
+	mkdir -p $(build)/usr/bin
 	cp -p ../src/*.sh $(build)$(deploy_dir)
 	cp -p ../src/interactive/*.sh $(build)$(deploy_dir)/interactive
+	cp -p ../src/scripts/*.sh $(build)/usr/bin
 
 	# Build the .deb package.
 	fakeroot chown -R root:root $(build)
