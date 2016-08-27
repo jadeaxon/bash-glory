@@ -143,22 +143,24 @@ fg() {
 
 alias ff='find "`pwd`"' # List full paths instead of relative.  Quote backticks in case path has spaces.
 # Probably should have the options always in alphabetical order for the grep aliases.
-alias grep='pcregrep --color'
-alias g='pcregrep --color' # Perl-compatible regular expression grep.
-alias gr='pcregrep -r' # Recursively descent diretories
-alias gv='pcregrep -v' # Print lines not containing given pattern.
-alias grv='pcregrep -r -v' # Recursive inverted Perl-compatible grep.
-alias gi='pcregrep -i'
-alias gvi='pcregrep -v -i'
-alias giv='pcregrep -i -v'
-alias gri='pcregrep -r -i'
-alias gir='pcregrep -i -r'
-alias grvi='pcregrep -r -v -i'
-alias girv='pcregrep -i -r -v'
-alias gH='pcregrep -H'
-alias gHi='pcregrep -H -i'
-alias gHv='pcregrep -H -v'
-alias gHiv='pcregrep -H -i -v'
+ca='--color=always'
+alias grep="pcregrep $ca"
+alias g="pcregrep $ca" # Perl-compatible regular expression grep.
+alias gr="pcregrep -r $ca" # Recursively descent diretories
+alias gv="pcregrep -v $ca" # Print lines not containing given pattern.
+alias grv="pcregrep -r -v $ca" # Recursive inverted Perl-compatible grep.
+alias gi="pcregrep -i $ca" 
+alias gvi="pcregrep -v -i $ca" 
+alias giv="pcregrep -i -v $ca" 
+alias gri="pcregrep -r -i $ca" 
+alias gir="pcregrep -i -r $ca" 
+alias grvi="pcregrep -r -v -i $ca" 
+alias girv="pcregrep -i -r -v $ca" 
+alias gH="pcregrep -H $ca" 
+alias gHi="pcregrep -H -i $ca" 
+alias gHv="pcregrep -H -v $ca" 
+alias gHiv="pcregrep -H -i -v $ca" 
+unset ca
 
 alias sha1='sha1sum' # SHA-1 checksum.
 alias md5='md5sum' # MD5 checksum.
