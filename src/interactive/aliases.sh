@@ -451,9 +451,6 @@ cdwhich() {
 # cd to wherever the given executable is located.
 alias cdw='cdwhich'
 
-alias itunes='/cygdrive/c/Program\ Files/iTunes/iTunes.exe &' # Windows specific.
-
-
 alias tc='create_tgz' # Make a .tgz from a given directory.
 alias tl='tar tzvf' # List the contents of a .tgz file.
 
@@ -548,3 +545,9 @@ if [ -z "$CYGWIN" ]; then
 		eval "$(thefuck-alias fix)"
 	fi
 fi
+
+# Windows aliases.
+alias vlc='"/cygdrive/c/Program Files (x86)/VideoLAN/VLC/vlc.exe"'
+alias itunes='/cygdrive/c/Program\ Files/iTunes/iTunes.exe &' # Windows specific.
+
+
