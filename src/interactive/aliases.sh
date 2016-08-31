@@ -171,11 +171,11 @@ alias sha256='sha256sum'
 # NOTE: The trailing space causes the next word on commandline to also be evaluated as an alias.
 # This allows you to say things like
 # ss?|x sa # Add all unadded files to SVN repo.
-alias x='xargs -n 1 ' # One command per stdin token.
-alias x{='xargs -i -n 1 ' # Form one command per line from stdin using '{}' as placeholder.
-alias x0='xargs --null -n 1 '
-alias x{0='xargs --null -i -n 1 '
-alias x0{='xargs --null -i -n 1 '
+alias x='strip_ansi_color | xargs -n 1 ' # One command per stdin token.
+alias x{='strip_ansi_color | xargs -i -n 1 ' # Form one command per line from stdin using '{}' as placeholder.
+alias x0='strip_ansi_color | xargs --null -n 1 '
+alias x{0='strip_ansi_color | xargs --null -i -n 1 '
+alias x0{='strip_ansi_color | xargs --null -i -n 1 '
 
 alias bu='backup' # Back up a file or a directory.
 

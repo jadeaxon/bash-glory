@@ -31,6 +31,13 @@ commify() {
 }
 
 
+# Strips ANSI color escape sequences from text.  This filters all stdin.
+# Need this since I set grep to always color so I can pipe it to less.
+# However, when I want to pipe grep to xargs, I need to remove the color.
+strip_ansi_color() {
+	sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"
+}
+
 
 #==============================================================================
 # Tests
@@ -41,7 +48,9 @@ string__test() {
 	echo	
 	commify 1234567890
 	echo
+	ls -la --color=always | strip_ansi_color
 }
+
 
 
 # Script is being run directly, not sourced.
