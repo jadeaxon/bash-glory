@@ -64,7 +64,7 @@ update-bash-glory() {
 	echo "bash-glory: Updating self."
 	cd $workspace >& /dev/null
 	rm -f debian/*.deb
-	./build.sh >& build.log
+	[ -z "$CYGWIN" ] && ./build.sh >& build.log
 	sudo dpkg -i debian/bash-glory*.deb
 	cd - >& /dev/null
 

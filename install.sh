@@ -2,8 +2,8 @@
 
 # PRE: Running on Cygwin.  Use the .deb pkg on Debian/Ubuntu.
 if [ -z "$CYGWIN" ]; then
-	echo "install.sh: ERROR: This script should only be run in Cygwin."
-	exit 1
+	sudo dpkg -i debian/*.deb
+	exit $?
 fi
 
 libdir=/usr/share/lib/bash-glory
