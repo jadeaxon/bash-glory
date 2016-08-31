@@ -5,7 +5,11 @@ workspace=$HOME/projects/bash-glory
 # Provides frontend to bash-glory subcommands.
 bash-glory() {
 	if [ "$1" == 'version' ]; then
-		dpkg-query -W -f='${Version}' bash-glory
+		if [ -z "$CYGWIN" ]; then	
+			dpkg-query -W -f='${Version}' bash-glory
+		else # Running Cygwin.
+			grep ^Version: /usr/share/lib/bash-glory/control | cut -f2 -d' '
+		fi
 		return 0
 	elif [ "$1" == 'github-version' ]; then
 		control_file=$workspace/debian/control
