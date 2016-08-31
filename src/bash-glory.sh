@@ -5,7 +5,6 @@
 glory=/usr/share/lib/bash-glory
 iglory=/usr/share/lib/bash-glory/interactive
 
-source $glory/bash-glory.sh
 source $glory/debug.sh
 source $glory/env.sh
 source $glory/string.sh
