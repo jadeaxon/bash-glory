@@ -69,7 +69,7 @@ update-bash-glory() {
 	cd $workspace >& /dev/null
 	rm -f debian/*.deb
 	[ -z "$CYGWIN" ] && ./build.sh >& build.log
-	sudo dpkg -i debian/bash-glory*.deb
+	./install.sh	
 	cd - >& /dev/null
 
 } # update-bash-glory()
