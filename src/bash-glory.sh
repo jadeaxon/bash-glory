@@ -1,6 +1,46 @@
 #!/usr/bin/env bash
 
+# Consolidate sourcing of the entire library.
+
+glory=/usr/share/lib/bash-glory
+iglory=/usr/share/lib/bash-glory/interactive
+
+source $glory/bash-glory.sh
+source $glory/debug.sh
+source $glory/env.sh
+source $glory/string.sh
+source $glory/filesystem.sh
+source $glory/tui.sh
+source $glory/math.sh
+source $glory/ubuntu.sh
+
+
+# Only source interactive libs in interactive shell.
+if [[ "$PS1" ]]; then
+	source $iglory/filesystem.sh
+	source $iglory/network.sh
+	source $iglory/www.sh
+	source $iglory/e-mail.sh
+	source $iglory/swdev.sh
+	source $iglory/vim.sh
+	source $iglory/string.sh
+	source $iglory/bash.sh
+	source $iglory/system.sh
+
+	if [ "$CYGWIN" ]; then
+		source $iglory/windows.sh
+	fi
+fi
+
+unset glory
+unset iglory
+
 workspace=$HOME/projects/bash-glory
+
+
+#==============================================================================
+# Functions
+#==============================================================================
 
 # Provides frontend to bash-glory subcommands.
 bash-glory() {
