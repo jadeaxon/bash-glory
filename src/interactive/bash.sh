@@ -6,6 +6,7 @@
 
 # Initializes the Bash prompt.
 init_prompt() {
+	GIT_BRANCH=$(git branch | head -1 | cut -f2 -d' ')	
 	PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
 	# \[\e]0;$WINDOWTITLE:\w\a\]
 
@@ -32,7 +33,7 @@ init_prompt() {
 	reset='\[\e[0m\]' # Resets terminal to default settings.
 
 	# PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[34m\]!\! \[\e[35m\]\T \[\e[0m\]\n\$ '
-	PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${reset}\n\$ "
+	PS1="${init}\n${green}\u@\h ${white}${GIT_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${reset}\n\$ "
 
 	# This would usually set the Cygwin window title to 'Title'.  However, as PS1 is defined, this 
 	# somehow overrides this.
