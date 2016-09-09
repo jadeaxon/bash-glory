@@ -6,7 +6,7 @@
 
 # Initializes the Bash prompt.
 init_prompt() {
-	GIT_BRANCH=$(git branch 2> /dev/null | head -1 | cut -f2 -d' ')	
+	GIT_BRANCH=$(git branch 2> /dev/null | grep '^[*]' | cut -f2 -d' ')	
 	PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
 	# \[\e]0;$WINDOWTITLE:\w\a\]
 
