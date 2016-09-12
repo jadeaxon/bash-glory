@@ -370,6 +370,7 @@ alias sx=$'svn propset svn:executable \'*\''
 
 # Git aliases.
 alias gs='git status'
+alias gss='git status -s' # Short status.  Similar to SVN output.
 alias gca='git commit -a' # Adds all changed files under cwd tree and commits them.
 alias ga='git add'
 alias gad='git add'
