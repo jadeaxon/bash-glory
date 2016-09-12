@@ -12,6 +12,7 @@ source $glory/filesystem.sh
 source $glory/tui.sh
 source $glory/math.sh
 source $glory/ubuntu.sh
+source $glory/datetime.sh
 
 
 # Only source interactive libs in interactive shell.
