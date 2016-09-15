@@ -392,6 +392,7 @@ alias gd='git diff nv8-ui develop --'
 alias branch='git branch'
 alias checkout='git checkout'
 alias co='git checkout'
+alias cob='git checkout -b' # Create and checkout a new Git branch.
 alias cod='git checkout develop' # GitFlow.
 alias ci='git commit'
 alias ciam='git add -A; git commit -a -m'
