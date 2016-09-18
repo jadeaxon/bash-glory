@@ -2,6 +2,10 @@
 
 # Consolidate sourcing of the entire library.
 
+# Assume certain global options.
+set -o pipefail
+shopt -s nullglob
+
 glory=/usr/share/lib/bash-glory
 iglory=/usr/share/lib/bash-glory/interactive
 

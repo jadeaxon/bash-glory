@@ -121,7 +121,22 @@ find_or_fix() {
 # Source arg if a file.
 # Meant to be used with '.' as an alias for it.
 do_default_action() {
+	local F="${FUNCNAME}()"
 	ext=$(extension "$1")
+
+	# If there are no args, we run ./default.sh if it exists.
+	# If not, we do the default default action for all dirs.
+	# Note that '. <dir>' simply cds to <dir>.  This default
+	# action for a directory only triggers via lone dot.
+	if (( $# == 0 )); then
+		## echo "$F: Doing default action for *this* directory."
+		if [ -x default.sh ]; then
+			./default.sh
+		else # No override default.sh defined.
+			do_default_default_dir_action
+		fi
+		return 0
+	fi
 
 	# Make it so we can do default action for a list of files.
 	for arg in "$@"; do
@@ -179,6 +194,37 @@ do_default_action() {
 	fi
 
 } # do_default_action()
+
+
+# Does the default default dir action.  This is triggered when you run
+# a lone '.' command in a directory in which there is no default.sh script.
+# PRE: pipefail and nullglob
+do_default_default_dir_action() {
+	local F="do_default_action()"	
+	
+	local source_files=$(echo *.c) 
+	if [ -z "$source_files" ]; then
+		ls -la
+		return 0
+	fi
+
+	# TO DO: If no main.c, we should try to compile and run the last modified .c file.
+	if gcc main.c |& tee make.out; then
+		rm make.out
+		if [ -x a.out ]; then # Linux
+			./a.out
+		elif [ -x a.exe ]; then # Cygwin
+			./a.exe
+		else # No executable found.
+			echo "$F: ERROR: No executable found!"
+			exit 1
+		fi
+	else # Compilation failed.
+		# Edit errors as a Vim quicklist.
+		vim -q make.out
+	fi
+
+} # do_default_default_dir_action()
 
 
 #==============================================================================
