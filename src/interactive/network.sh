@@ -7,12 +7,12 @@
 # Functions
 #==============================================================================
 
-# Lists just the IP address of this machine for its eth0 network interface.
+# Lists just the IP address of this machine for its first network interface.
 if [[ -z $CYGWIN ]]; then
 	function ipaddress() {
 		# This will (some) handle dual-homed machines.
 		# Also handles machines with a wireless connection.
-		(ifconfig eth0;ifconfig eth1;ifconfig wlan0) 2> /dev/null | grep 'inet addr' | perl -pe 's/^\s+inet addr:(\S+).*$/$1/g'
+		ifconfig -a | \grep 'inet addr' | perl -pe 's/^\s+inet addr:(\S+).*$/$1/g' | head -1	
 	}
 else # Cygwin.
 	function ipaddress() {
