@@ -52,7 +52,9 @@ bash-glory() {
 		if [ -z "$CYGWIN" ]; then	
 			dpkg-query -W -f='${Version}' bash-glory
 		else # Running Cygwin.
+			set +o pipefail	
 			grep ^Version: /usr/share/lib/bash-glory/control | cut -f2 -d' '
+			set -o pipefail
 		fi
 		return 0
 	elif [ "$1" == 'github-version' ]; then
@@ -65,9 +67,11 @@ bash-glory() {
 		git stash >& /dev/null
 		git pull >& /dev/null
 		cd - >& /dev/null
+		set +o pipefail	
 		grep ^Version: $control_file | cut -f2 -d' ' || \
 			echo "bash-glory: ERROR: Control file has no version." 1>&2 && \
 			return 1
+		set -o pipefail
 		return 0
 	elif [ "$1" == 'update' ]; then
 		should-update-bash-glory && update-bash-glory
