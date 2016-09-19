@@ -204,7 +204,7 @@ do_default_default_dir_action() {
 	
 	local source_files=$(echo *.c) 
 	if [ -z "$source_files" ]; then
-		ls -la
+		ls -lahF --color
 		return 0
 	fi
 
