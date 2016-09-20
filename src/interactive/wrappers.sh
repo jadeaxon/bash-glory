@@ -10,6 +10,6 @@
 # Aliased as grn.
 # Example: grn needle
 grep_rn() {
-	pcrepgrep -r -n "$@" *
+	pcregrep -r -n "$@" *
 }
 
