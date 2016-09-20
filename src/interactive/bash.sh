@@ -209,7 +209,7 @@ do_default_default_dir_action() {
 	fi
 
 	# TO DO: If no main.c, we should try to compile and run the last modified .c file.
-	if gcc main.c |& tee make.out; then
+	if gcc -Werror main.c |& tee make.out; then
 		rm make.out
 		if [ -x a.out ]; then # Linux
 			./a.out
