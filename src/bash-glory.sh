@@ -20,6 +20,7 @@ source $glory/datetime.sh
 
 
 # Only source interactive libs in interactive shell.
+# NOTE: Aliases are sourced separately later by .bashrc.
 if [[ "$PS1" ]]; then
 	source $iglory/filesystem.sh
 	source $iglory/network.sh
@@ -30,6 +31,7 @@ if [[ "$PS1" ]]; then
 	source $iglory/string.sh
 	source $iglory/bash.sh
 	source $iglory/system.sh
+	source $iglory/wrappers.sh
 
 	if [ "$CYGWIN" ]; then
 		source $iglory/windows.sh

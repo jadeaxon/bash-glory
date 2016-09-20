@@ -149,6 +149,7 @@ ca='--color=always'
 alias grep="pcregrep $ca"
 alias g="pcregrep $ca" # Perl-compatible regular expression grep.
 alias gr="pcregrep -r $ca" # Recursively descent diretories
+alias grn="grep_rn"
 alias gv="pcregrep -v $ca" # Print lines not containing given pattern.
 alias grv="pcregrep -r -v $ca" # Recursive inverted Perl-compatible grep.
 alias gi="pcregrep -i $ca" 
