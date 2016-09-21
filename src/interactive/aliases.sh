@@ -7,8 +7,7 @@
 # Aliases should always appear on a separate line.  Do not use them inside functions.
 # In general, prefer bash functions over aliases.
 
-# Glob chars are used to define some of the aliases, so we can't use nullglob here.
-shopt -u nullglob # Unset.
+# PRE: nullglob is not set.
 
 # TO DO: Define useful aliases for all easily typeable single characters.
 
@@ -555,5 +554,4 @@ fi
 alias vlc='"/cygdrive/c/Program Files (x86)/VideoLAN/VLC/vlc.exe"'
 alias itunes='/cygdrive/c/Program\ Files/iTunes/iTunes.exe &' # Windows specific.
 
-shopt -s nullglob # Set.
 
