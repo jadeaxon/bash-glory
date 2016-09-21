@@ -199,10 +199,12 @@ do_default_action() {
 # Does the default default dir action.  This is triggered when you run
 # a lone '.' command in a directory in which there is no default.sh script.
 # PRE: pipefail and nullglob
-do_default_default_dir_action() {
+do_default_default_dir_action() {	
 	local F="do_default_action()"	
 	
-	local source_files=$(echo *.c) 
+	shopt -s nullglob
+	local source_files=$(echo *.c)
+	shopt -u nullglob
 	if [ -z "$source_files" ]; then
 		ls -lahF --color
 		return 0

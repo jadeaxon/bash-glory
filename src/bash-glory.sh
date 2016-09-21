@@ -4,7 +4,11 @@
 
 # Assume certain global options.
 set -o pipefail
-shopt -s nullglob
+
+# FAIL: Given that we're using this file to pull in all the interactive libs, we cannot use nullglob
+# as the default.  It causes problems defining aliases and causes this sort of command to fail:
+# sudo scp jenkins@build2:release/armel/glide*.deb . => scp . => syntax error.
+# shopt -s nullglob
 
 glory=/usr/share/lib/bash-glory
 iglory=/usr/share/lib/bash-glory/interactive
