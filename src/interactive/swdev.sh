@@ -34,8 +34,17 @@ deploy_to() {
 		pkgsdir=/home/root/packages
 	fi
 
-	scp debian/*.deb $target:$pkgsdir
-	armel=$(echo debian/*.deb | grep -c _armel.deb)
+	# Handle the dige-provision pkg case.
+	deb_dir=debian
+	shopt -s nullglob
+	exists=$(echo $deb_dir/*.deb)
+	shopt -u nullglob
+	if [ -z "$exists" ]; then
+		deb_dir=debian_nv
+	fi
+
+	scp $deb_dir/*.deb $target:$pkgsdir
+	armel=$(echo $deb_dir/*.deb | grep -c _armel.deb)
 	if (( armel )); then
 		if [ "$dt" == "nv" ]; then # We are deploying pkg directly to an NV.
 			ssh $target 'cd ~/packages; dpkg -i *.deb; mkdir -p installed; mv *.deb installed/'
