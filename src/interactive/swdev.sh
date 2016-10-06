@@ -40,7 +40,7 @@ deploy_to() {
 	exists=$(echo $deb_dir/*.deb)
 	shopt -u nullglob
 	if [ -z "$exists" ]; then
-		deb_dir=debian_nv
+		deb_dir=arm/debian_nv
 	fi
 
 	scp $deb_dir/*.deb $target:$pkgsdir
