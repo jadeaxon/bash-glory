@@ -6,6 +6,8 @@
 
 # Initializes the Bash prompt.
 init_prompt() {
+	local EXIT="$?"
+	
 	GIT_BRANCH=$(git branch 2> /dev/null | grep '^[*]' | cut -f2 -d' ')	
 	PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
 	# \[\e]0;$WINDOWTITLE:\w\a\]
@@ -32,11 +34,19 @@ init_prompt() {
 
 	reset='\[\e[0m\]' # Resets terminal to default settings.
 
+
 	# PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w \[\e[34m\]!\! \[\e[35m\]\T \[\e[0m\]\n\$ '
+	smiley=""
+	if (( EXIT == 0 )); then
+		smiley='\[\e[32m\]:)\[\e[0m\]'
+	else
+		smiley='\[\e[31m\]:(\[\e[0m\]'	
+	fi
+
 	if [ -z "$GIT_BRANCH" ]; then	
-		PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${reset}\n\$ "
+		PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
 	else # We are on a Git branch.
-		PS1="${init}\n${green}\u@\h ${white}${GIT_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${reset}\n\$ "
+		PS1="${init}\n${green}\u@\h ${white}${GIT_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
 	fi
 
 	# This would usually set the Cygwin window title to 'Title'.  However, as PS1 is defined, this 
