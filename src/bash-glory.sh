@@ -37,7 +37,9 @@ if [[ "$PS1" ]]; then
 	source $iglory/system.sh
 	source $iglory/wrappers.sh
 
-	if [ "$CYGWIN" ]; then
+	# The var CYGWIN gets defined later by my .bashrc, so we can't use it here.
+	# COMSPEC is only defined on Windows machines.
+	if [ "$COMSPEC" ]; then
 		source $iglory/windows.sh
 	fi
 fi
