@@ -39,7 +39,11 @@ setup_vim() {
 	echo "setup_vim: Installing Syntastic."
 	cd ~/.vim/bundle
 	rm -rf syntastic	
-	git clone https://github.com/scrooloose/syntastic.git
+	git clone git://github.com/scrooloose/syntastic.git
+	cd -
+	cd ~/.vim/bundle
+	rm -rf nerdcommenter
+	git clone git://github.com/scrooloose/nerdcommenter.git
 	cd -
 
 	mkdir -p ~/tmp/vim
