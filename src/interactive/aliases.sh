@@ -402,7 +402,6 @@ alias ci='git commit'
 alias ciam='git add -A; git commit -a -m'
 alias commit='git commit'
 
-
 # Scripting aliases.  Great for one liners.
 alias p='perl'
 alias pp='perl -p -e'
@@ -415,6 +414,8 @@ alias pieb='perl -p -i.bak -e'
 alias pibe='perl -p -i.bak -e'
 alias pnbe='perl -n -i.bak -e'
 alias py='python'
+alias p3='python3'
+alias py3='python3'
 
 # Regular Expression Debugger
 # Allows you to visually step through a regexp matching against a string.
