@@ -268,6 +268,8 @@ alias lc='lowercase'
 # alias camelcase='?'
 # TO DO: randomcase.
 
+alias rtrim='sed -i "s/[[:space:]]*$//"'
+
 # Meta-efficiency shortcuts.  They make it more efficient to become more efficient!
 alias v.b='vim ~/.bashrc'
 if [ -f ~/.bashrc_jeff ]; then
