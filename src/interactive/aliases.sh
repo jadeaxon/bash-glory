@@ -121,7 +121,6 @@ if [ $HOSTNAME == 'jdev' ]; then
 	alias cdpgss='cd ~/projects/digEcor/glide/glide-server/scripts'
 	alias cdpu='cd ~/projects/digEcor/player/ui2'
 fi
-alias cdph='cd ~/Dropbox/Projects/Hello'
 alias cdn='cd ~/Dropbox/Organization/Notes'
 export CHAT_DIR='/home/janderson/Dropbox/Organization/Notes/digEcor/Development Chat'
 alias cdchat='cd "$CHAT_DIR"'
