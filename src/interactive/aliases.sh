@@ -108,6 +108,11 @@ alias cddl='cd ~/Downloads'
 alias cdo='cd ~/Dropbox/Organization'
 alias cdp='cd ~/Dropbox/Projects'
 alias cdpp='cd ${HOME}"/projects/hello/Python 3/lp3thw"'
+# The new project "Demon Dungeon" or "Demo Engine (Ngeon)" as you prefer.
+alias cdpd='cd ${HOME}/projects/demongeon'
+alias cdpb='cd ${HOME}/projects/bash-glory'
+alias cdpm='cd ${HOME}/projects/modes'
+alias cdph='cd ${HOME}/projects/hello'
 if [ $HOSTNAME == 'jdev' ]; then
 	unalias cdp
 	alias cdp='cd ~/projects/digEcor'
