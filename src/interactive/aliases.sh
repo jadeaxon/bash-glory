@@ -268,7 +268,9 @@ alias lc='lowercase'
 # alias camelcase='?'
 # TO DO: randomcase.
 
+# Use these to get rid of extra trailing whitespace before Git commits.
 alias rtrim='sed -i "s/[[:space:]]*$//"'
+alias rstrip='sed -i "s/[[:space:]]*$//"'
 
 # Meta-efficiency shortcuts.  They make it more efficient to become more efficient!
 alias v.b='vim ~/.bashrc'
