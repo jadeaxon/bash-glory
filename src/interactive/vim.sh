@@ -32,7 +32,7 @@ setup_vim() {
 	
 	# For some reason, gVim isn't reading out of ~/.vim/autoload/.
 	if [ "$CYGWIN" ]; then
-		cp ~/.vim/autoload/pathogen.vim /cygdrive/c/Program\ Files\ \(x86\)/Vim/vim74/autoload/
+		cp ~/.vim/autoload/pathogen.vim /cygdrive/c/Program\ Files\ \(x86\)/Vim/vim[0-9][0-9]/autoload/
 	fi
 	
 	cd -	
