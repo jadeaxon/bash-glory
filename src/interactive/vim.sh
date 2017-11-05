@@ -46,7 +46,15 @@ setup_vim() {
 	git clone git://github.com/scrooloose/nerdcommenter.git
 	cd -
 
+	# Set up the necessary temp directories.
 	mkdir -p ~/tmp/vim
+	chmod 1777 ~/tmp
+	chmod 1777 ~/tmp/vim
+
+	if [ -d /cygdrive/c/ ]; then
+		mkdir -p /cygdrive/c/temp
+		chmod 1777 /cygdrive/c/temp
+	fi
 } # setup_vim()
 
 
