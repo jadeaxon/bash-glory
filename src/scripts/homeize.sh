@@ -11,11 +11,15 @@ if [ -d ~/.git ]; then
 	exit 1
 fi
 
-sudo apt-get install pcregrep
-sudo apt-get install fortune
-sudo apt-get install keychain
-sudo apt-get install curl
-sudo apt-get install vim
+
+# Don't try this on Cygwin because you have neither apt-get nor sudo.
+if [ ! -n "$COMSPEC" ]; then
+	sudo apt-get install pcregrep
+	sudo apt-get install fortune
+	sudo apt-get install keychain
+	sudo apt-get install curl
+	sudo apt-get install vim
+fi
 
 mkdir -p ~/tmp/vim
 source /usr/share/lib/bash-glory/interactive/vim.sh
