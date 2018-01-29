@@ -332,6 +332,7 @@ fi
 alias ipa='ipaddress'
 
 
+
 # Pipe to system clipboard functionality.
 # TO DO: Implement for other OSes.  Allow piping from remote ssh'd system to local clipboard.
 # TO DO: Make it so that cb writes contents of clipboard if not being piped into.
@@ -343,6 +344,18 @@ if [ "$CYGWIN" ]; then
 	# Windows is starting to get things right.
 	alias cb='clip'
 	alias pcb='cat /dev/clipboard' # Paste clipboard.
+	
+	# The Node.js interpreter doesn't work right interactively in mintty.  Start in another terminal.
+	function node_helper() {
+		if (( $# == 0 )); then
+			cygstart --maximize /bin/bash -c node
+		else
+			# Ha, yes, avoiding infinite recursion is a good idea.
+			\node "$@"
+		fi
+	}
+	alias node=node_helper
+
 else
 	alias cb='echo "Not implemented on this OS yet."'
 	alias pcb='cat /dev/clip'
