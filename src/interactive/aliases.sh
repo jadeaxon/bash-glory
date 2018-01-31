@@ -574,6 +574,9 @@ if [ -z "$CYGWIN" ]; then
 	fi
 fi
 
+# Get command history for the 11g version of SQL*Plus that I use.
+alias sqlplus='rlwrap sqlplus'
+
 # Windows aliases.
 alias vlc='"/cygdrive/c/Program Files (x86)/VideoLAN/VLC/vlc.exe"'
 alias itunes='/cygdrive/c/Program\ Files/iTunes/iTunes.exe &' # Windows specific.
