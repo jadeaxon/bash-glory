@@ -113,6 +113,7 @@ alias cdpd='cd ${HOME}/projects/demongeon'
 alias cdpb='cd ${HOME}/projects/bash-glory'
 alias cdpm='cd ${HOME}/projects/modes'
 alias cdph='cd ${HOME}/projects/hello'
+alias cdpu='cd ${HOME}/projects/UVU'
 if [ $HOSTNAME == 'jdev' ]; then
 	unalias cdp
 	alias cdp='cd ~/projects/digEcor'
