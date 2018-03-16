@@ -9,6 +9,13 @@ init_prompt() {
 	local EXIT="$?"
 	
 	GIT_BRANCH=$(git branch 2> /dev/null | grep '^[*]' | cut -f2 -d' ')	
+	
+	# This works for how branches are done at UVU.
+	SVN_BRANCH=""	
+	if [ -d .svn ]; then
+		SVN_BRANCH=$(svn info 2> /dev/null | grep '^URL:' | sed -e 's/.*branch[/]//' | sed -e 's/[/].*//')
+	fi
+
 	PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
 	# \[\e]0;$WINDOWTITLE:\w\a\]
 
@@ -43,10 +50,12 @@ init_prompt() {
 		smiley='\[\e[31m\]:(\[\e[0m\]'	
 	fi
 
-	if [ -z "$GIT_BRANCH" ]; then	
-		PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
-	else # We are on a Git branch.
+	if [ "$SVN_BRANCH" ]; then
+		PS1="${init}\n${green}\u@\h ${white}${SVN_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
+	elif [ "$GIT_BRANCH" ]; then	
 		PS1="${init}\n${green}\u@\h ${white}${GIT_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
+	else # We not in a Git or SVN working directory.
+		PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
 	fi
 
 	# This would usually set the Cygwin window title to 'Title'.  However, as PS1 is defined, this 
