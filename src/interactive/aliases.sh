@@ -106,7 +106,7 @@ alias cdd='cd ~/Desktop'
 alias cddb='cd ~/Dropbox'
 alias cddl='cd ~/Downloads'
 alias cdo='cd ~/Dropbox/Organization'
-alias cdp='cd ~/Dropbox/Projects'
+alias cdp='cd ~/projects'
 alias cdpp='cd ${HOME}"/projects/hello/Python 3/lp3thw"'
 # The new project "Demon Dungeon" or "Demo Engine (Ngeon)" as you prefer.
 alias cdpd='cd ${HOME}/projects/demongeon'
