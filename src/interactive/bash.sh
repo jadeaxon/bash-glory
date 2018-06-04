@@ -7,7 +7,8 @@
 # Initializes the Bash prompt.
 init_prompt() {
 	local EXIT="$?"
-	
+	local VENV="" # Virtual environment name.
+
 	GIT_BRANCH=$(git branch 2> /dev/null | grep '^[*]' | cut -f2 -d' ')	
 	
 	# This works for how branches are done at UVU.
@@ -18,6 +19,11 @@ init_prompt() {
 
 	PS1_SET_TITLE='\[\e]0;\u@\h:\w\a\]'
 	# \[\e]0;$WINDOWTITLE:\w\a\]
+
+	if [ "$VIRTUAL_ENV" ]; then
+		VENV=${VIRTUAL_ENV##*/} # Remove up to and including final /.
+		VENV="(${VENV}) "
+	fi
 
 	# ANSI terminal control sequences for setting foreground text color.
 	black='\[\e[30m\]'
@@ -51,13 +57,13 @@ init_prompt() {
 	fi
 
 	if [ "$SVN_BRANCH" ]; then
-		PS1="${init}\n${green}\u@\h ${white}${SVN_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
+		PS1="${init}\n${VENV}${green}\u@\h ${white}${SVN_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
 	elif [ "$GIT_BRANCH" ]; then	
-		PS1="${init}\n${green}\u@\h ${white}${GIT_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
+		PS1="${init}\n${VENV}${green}\u@\h ${white}${GIT_BRANCH} ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
 	else # We not in a Git or SVN working directory.
-		PS1="${init}\n${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
+		PS1="${init}\n${VENV}${green}\u@\h ${yellow}\w ${blue}!\! ${magenta}\T ${smiley} ${reset}\n\$ "
 	fi
-
+	
 	# This would usually set the Cygwin window title to 'Title'.  However, as PS1 is defined, this 
 	# somehow overrides this.
 	# echo -e "\033]2;Title\007"
