@@ -168,6 +168,17 @@ back() {
 } > /dev/null
 
 
+# Save working directory.
+# Useful when you decide you need a screen session deep in the dir tree.
+savedir() {
+	pwd > ~/tmp/cwd.txt
+}
+
+# Restore saved working directory.
+loaddir() {
+	cd $(< ~/tmp/cwd.txt)
+}
+
 # cd to given directory and then list it.
 # Aliased to '.l'.
 cd_and_list() {
