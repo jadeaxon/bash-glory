@@ -192,6 +192,8 @@ alias bu='backup' # Back up a file or a directory.
 alias sudo='sudo '
 alias s='sudo ' # Allow use of aliases with sudo (trailing space causes this).
 alias S='ssh' # Along with my ssh(), I can now say 'S 118'.  Bam!
+
+# digEcor ssh aliases.
 alias St='S root@tinman-sp1'
 alias St2='S root@tinman-sp2'
 alias St3='S root@tinman-sp3'
@@ -212,8 +214,14 @@ alias Sp='S root@pp3'
 alias Sc='S root@cm'
 alias So='S root@oz-sp1'
 alias Sct='S tas-cm@cm'
+
+# UVU ssh aliases.
+alias Sj='S janderson@jobsub'
+
+# Other ssh aliases.
 alias S3='S pi@pi3' # Raspberry Pi 3
 alias S2='S pi@pi2' # Raspberry Pi 2
+
 alias C='scp'
 alias CJ='scp_to_desktop'
 
@@ -284,6 +292,7 @@ if [ -f ~/.bashrc_jeff ]; then
 fi
 alias c.b='git add ~/.bashrc; git commit'
 alias v.a='vim ~/projects/bash-glory/src/interactive/aliases.sh'
+alias s.a='source ~/projects/bash-glory/src/interactive/aliases.sh'
 
 alias v.i='vim ~/.inputrc'
 
