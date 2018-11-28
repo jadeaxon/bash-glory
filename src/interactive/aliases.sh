@@ -217,6 +217,7 @@ alias Sct='S tas-cm@cm'
 
 # UVU ssh aliases.
 alias Sj='S janderson@jobsub'
+alias Sjt='S janderson@jobsubtst'
 
 # Other ssh aliases.
 alias S3='S pi@pi3' # Raspberry Pi 3
