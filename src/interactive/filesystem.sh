@@ -176,7 +176,7 @@ savedir() {
 
 # Restore saved working directory.
 loaddir() {
-	cd $(< ~/tmp/cwd.txt)
+	cd "$(< ~/tmp/cwd.txt)"
 }
 
 # cd to given directory and then list it.
