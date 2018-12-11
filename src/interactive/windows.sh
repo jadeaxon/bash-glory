@@ -23,7 +23,7 @@ open_explorer() {
 unalias firefox >& /dev/null
 function firefox {
 	url=${1:-www.google.com}
-	'/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe' "$url"
+	'/cygdrive/c/Program Files/Mozilla Firefox/firefox.exe' "$url"
 }
 
 
