@@ -87,6 +87,8 @@ alias .='do_default_action'
 alias E='open_explorer' # Use Windows Explorer to open dir or run file with default program.
 alias F='firefox' # Open URLs using Firefox.
 
+
+
 # cd related aliases.
 alias .l='cd_and_list'
 alias ..l='cd ..; my_ls'
@@ -228,6 +230,14 @@ alias CJ='scp_to_desktop'
 
 alias R='rsync'
 alias Rp='rsync -avz --partial --progress'
+
+# Web development aliases.
+alias 8888='firefox http://localhost:8888/'
+alias 8080='firefox http://localhost:8080/'
+alias 8000='firefox http://localhost:8000/'
+alias 9999='firefox http://localhost:9999/'
+alias 9090='firefox http://localhost:9090/'
+alias 9000='firefox http://localhost:9000/'
 
 # Set up ssh agent so that we can automatically log onto and copy files to/from any machine
 # that has our public key as an authorized key.
