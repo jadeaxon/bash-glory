@@ -232,6 +232,7 @@ alias R='rsync'
 alias Rp='rsync -avz --partial --progress'
 
 # Web development aliases.
+alias serve='python3 -m http.server 8888 &'
 alias 8888='firefox http://localhost:8888/'
 alias 8080='firefox http://localhost:8080/'
 alias 8000='firefox http://localhost:8000/'
