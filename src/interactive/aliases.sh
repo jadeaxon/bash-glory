@@ -115,6 +115,8 @@ alias cdpd='cd ${HOME}/projects/demongeon'
 alias cdpb='cd ${HOME}/projects/bash-glory'
 alias cdpm='cd ${HOME}/projects/modes'
 alias cdph='cd ${HOME}/projects/hello'
+alias cdphw='cd ${HOME}/projects/webstorm/hello'
+alias cdphp='cd ${HOME}/projects/pycharm/hello'
 alias cdpu='cd ${HOME}/projects/UVU'
 if [ $HOSTNAME == 'jdev' ]; then
 	unalias cdp
