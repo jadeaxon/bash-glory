@@ -82,11 +82,11 @@ create_tgz() {
 # path() { # For some reason, my Linux VM chokes on this style of function declaration just here.
 function path {
 	if [ "$1" ]; then
-		# Echo the absolute path of the give file.
-		readlink -f "$1"
+		# Echo the absolute path of the give file.  Use ~ for home directory.
+		readlink -f "$1" | perl -pe "s@$HOME@~@"
 	else # No arg.
 		# Print PATH env var to stdout line-by-line.
-		echo $PATH | perl -pe 's/:/\n/g'
+		echo $PATH | perl -pe 's/:/\n/g' | perl -pe "s@$HOME@~@"
 	fi
 
 }
