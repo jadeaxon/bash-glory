@@ -266,6 +266,8 @@ fi
 alias vw='vimwhich'
 alias veh='vim /etc/hosts'
 alias vkh='vim ~/.ssh/known_hosts'
+alias vmc='cd ~; vim My\ Configuration.txt'
+alias cmc='git add My\ Configuration.txt; git ci My\ Configuration.txt'
 
 alias wrap='fmt' # Wraps long text lines.
 alias tab2space='expand --tabs=4' # Expand tabs to spaces.
