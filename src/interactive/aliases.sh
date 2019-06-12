@@ -369,6 +369,7 @@ if [ "$CYGWIN" ]; then
 	# This is actually a built in Windows command that copies stdin to clipboard!
 	# Windows is starting to get things right.
 	alias cb='clip'
+	alias clipboard='clip'
 	alias pcb='cat /dev/clipboard' # Paste clipboard.
 	
 	# The Node.js interpreter doesn't work right interactively in mintty.  Start in another terminal.
