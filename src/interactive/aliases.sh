@@ -220,8 +220,8 @@ alias So='S root@oz-sp1'
 alias Sct='S tas-cm@cm'
 
 # UVU ssh aliases.
-alias Sj='S janderson@jobsub'
-alias Sjt='S janderson@jobsubtst'
+alias Sj='S janderson@jobsub.priv.uvu.edu'
+alias Sjt='S janderson@jobsubtst.priv.uvu.edu'
 
 # Other ssh aliases.
 alias S3='S pi@pi3' # Raspberry Pi 3
