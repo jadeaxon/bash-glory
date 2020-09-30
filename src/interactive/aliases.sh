@@ -259,7 +259,14 @@ alias sov='set -o vi'
 alias soe='set -o emacs'
 
 alias vi='vim'
-alias v='vim'
+
+# For some reason, the title doesn't update when using screen.
+# Need the title to update so that AHK can be context-sensitive.
+# alias v='vim'
+function v() {
+	set_title "$1" && vim "$1"
+}
+
 if [ -e ~/.vimrc_jeff ]; then
 	alias vim='\vim -u ~/.vimrc_jeff'
 fi
