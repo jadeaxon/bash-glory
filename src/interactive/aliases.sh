@@ -224,6 +224,7 @@ alias Sct='S tas-cm@cm'
 # UVU ssh aliases.
 alias Sj='S janderson@jobsub.priv.uvu.edu'
 alias Sjt='S janderson@jobsubtst.priv.uvu.edu'
+alias Solv='S janderson@192.168.230.128' # Oracle Linux VM.
 
 # Other ssh aliases.
 alias S3='S pi@pi3' # Raspberry Pi 3
