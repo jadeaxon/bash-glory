@@ -120,6 +120,7 @@ alias cdphw='cd ${HOME}/projects/webstorm/hello'
 alias cdphp='cd ${HOME}/projects/pycharm/hello'
 alias cdpu='cd ${HOME}/projects/UVU'
 alias cdpus='cd ${HOME}/projects/UVU/svn/trunk'
+alias cdpug='cd ${HOME}/projects/UVU/gitlab'
 if [ $HOSTNAME == 'jdev' ]; then
 	unalias cdp
 	alias cdp='cd ~/projects/digEcor'
