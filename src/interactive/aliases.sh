@@ -121,6 +121,7 @@ alias cdphp='cd ${HOME}/projects/pycharm/hello'
 alias cdpu='cd ${HOME}/projects/UVU'
 # alias cdpus='cd ${HOME}/projects/UVU/svn/trunk'
 alias cdpus='cd ${HOME}/projects/UVU/gitlab/svn/uvu'
+alias cdbup='cd ${HOME}/projects/UVU/gitlab/svn/uvu/BUP'
 alias cdpug='cd ${HOME}/projects/UVU/gitlab'
 if [ $HOSTNAME == 'jdev' ]; then
 	unalias cdp
@@ -227,6 +228,7 @@ alias Sct='S tas-cm@cm'
 # UVU ssh aliases.
 alias Sj='S janderson@jobsub.priv.uvu.edu'
 alias Sjt='S janderson@jobsubtst.priv.uvu.edu'
+alias Sbt='S -oHostKeyAlgorithms=ssh-dss janderson@bantst-ssb8.priv.uvu.edu'
 alias Solv='S janderson@192.168.230.128' # Oracle Linux VM.
 
 # Other ssh aliases.

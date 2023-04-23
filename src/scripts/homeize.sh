@@ -24,7 +24,7 @@ fi
 mkdir -p ~/tmp/vim
 source /usr/share/lib/bash-glory/interactive/vim.sh
 
-setup_vim
+# setup_vim
 
 cd ~
 git init
