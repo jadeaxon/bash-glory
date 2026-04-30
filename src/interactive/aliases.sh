@@ -9,6 +9,8 @@
 
 # PRE: nullglob is not set.
 
+alias i='sudo apt install'
+
 alias G='query_google'
 
 alias td='todo'
@@ -42,8 +44,8 @@ alias yyyymmdd='date +Y%m%d'
 alias swap=$'awk \'{print $2, $1}\'' # Swaps the first two words on each line.
 alias shuffle='shuf' # Shuffle order of lines of input.
 alias vars="set | g = | gv '^\s'" # Print local and env vars, no func defs.
-alias dpgk='dpkg' # Misspelling.
-alias di='dpkg -i'
+alias dpgk='sudo dpkg' # Misspelling.
+alias di='sudo dpkg -i'
 alias dups='uniq -d'
 alias unmount='umount' # More natural.
 alias aliases='alias' # To get a list of all aliases.
