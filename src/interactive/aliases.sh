@@ -40,13 +40,6 @@ alias cdh='dirs -p'
 
 alias ra='/etc/init.d/apache2 restart'
 
-# MMS project.
-alias cdmms='cd ~/projects/digEcor/MMS/importer'
-alias .mms='cd ~/projects/digEcor/MMS/importer'
-
-
-alias cdbsp="cd $BSP"
-
 alias MDY='mdy'
 alias YMD='ymd'
 alias YYYY-MM-DD='date +%Y-%m-%d'
@@ -59,7 +52,7 @@ alias yyyymmdd='date +Y%m%d'
 alias swap=$'awk \'{print $2, $1}\'' # Swaps the first two words on each line.
 alias shuffle='shuf' # Shuffle order of lines of input.
 alias vars="set | g = | gv '^\s'" # Print local and env vars, no func defs.
-alias dpgk='dpkg'
+alias dpgk='dpkg' # Misspelling.
 alias di='dpkg -i'
 alias dups='uniq -d'
 alias unmount='umount' # More natural.
@@ -85,9 +78,9 @@ alias exti="exit" # Misspelling.
 
 alias .='do_default_action'
 alias E='open_explorer' # Use Windows Explorer to open dir or run file with default program.
-alias F='firefox' # Open URLs using Firefox.
 
-
+# No need. E opens URLs too.
+# alias F='firefox' # Open URLs using Firefox.
 
 # cd related aliases.
 alias .l='cd_and_list'
@@ -102,43 +95,24 @@ alias ..5='cd ../../../../..'
 alias ..6='cd ../../../../../..'
 alias cd..='cd ..'
 alias ~='cd ~'
-alias c:='cd /cygdrive/c'
-alias C:='cd /cygdrive/c'
+
+C_DIR='/cygdrive/c'
+if (( WSL )); then
+	C_DIR='/mnt/c'
+fi
+alias c:='cd ${C_DIR}'
+alias C:='cd ${C_DIR}'
+
 alias cdd='cd ~/Desktop'
-alias cddb='cd ~/Dropbox'
+# alias cddb='cd ~/Dropbox'
 alias cddl='cd ~/Downloads'
-alias cdo='cd ~/Dropbox/Organization'
+# alias cdo='cd ~/Dropbox/Organization'
 alias cdp='cd ~/projects'
-alias cdpp='cd ${HOME}"/projects/hello/Python 3/lp3thw"'
-# The new project "Demon Dungeon" or "Demo Engine (Ngeon)" as you prefer.
-alias cdpd='cd ${HOME}/projects/demongeon'
 alias cdpb='cd ${HOME}/projects/bash-glory'
 alias cdpm='cd ${HOME}/projects/modes'
 alias cdpmp='cd ${HOME}/projects/modes-private'
 alias cdph='cd ${HOME}/projects/hello'
-alias cdphw='cd ${HOME}/projects/webstorm/hello'
-alias cdphp='cd ${HOME}/projects/pycharm/hello'
-alias cdpu='cd ${HOME}/projects/UVU'
-# alias cdpus='cd ${HOME}/projects/UVU/svn/trunk'
-alias cdpus='cd ${HOME}/projects/UVU/gitlab/svn/uvu'
-alias cdbup='cd ${HOME}/projects/UVU/gitlab/svn/uvu/BUP'
-alias cdpug='cd ${HOME}/projects/UVU/gitlab'
-if [ $HOSTNAME == 'jdev' ]; then
-	unalias cdp
-	alias cdp='cd ~/projects/digEcor'
-	alias cdpg='cd ~/projects/digEcor/glide'
-	alias cdpgs='cd ~/projects/digEcor/glide/glide-server'
-	alias cdpgss='cd ~/projects/digEcor/glide/glide-server/scripts'
-	alias cdpu='cd ~/projects/digEcor/player/ui2'
-fi
-alias cdn='cd ~/Dropbox/Organization/Notes'
-export CHAT_DIR='/home/janderson/Dropbox/Organization/Notes/digEcor/Development Chat'
-alias cdchat='cd "$CHAT_DIR"'
-alias cdbp='cd /srv/root/var/lib/bootstrap' # Bootstrap packages dir on prov server.
-alias cdpt='cd ~/projects/typing-practice-launcher'
-alias cdtp='cd ~/projects/typing-practice-launcher'
-# alias cdm='cd ~/projects/modes' # Already have cdm() defined.
-alias cdss='cd ~/AndroidStudioProjects/Sunshine-Version-2'
+# alias cdn='cd ~/Dropbox/Organization/Notes'
 
 # Less can be more.  The -r option passes thru escape sequences so that color output
 # is preserved (such as from the ls command).
@@ -203,34 +177,6 @@ alias sudo='sudo '
 alias s='sudo ' # Allow use of aliases with sudo (trailing space causes this).
 alias S='ssh' # Along with my ssh(), I can now say 'S 118'.  Bam!
 
-# digEcor ssh aliases.
-alias St='S root@tinman-sp1'
-alias St2='S root@tinman-sp2'
-alias St3='S root@tinman-sp3'
-alias Sb='S root@bronzeboy-sp1'
-alias Sg='S root@glide-mothership.digecor.com'
-alias Sg2='S root@goldenboy-sp2'
-alias SB='S root@build.digecor.com'
-alias SB2='S jenkins@build2.digecor.com' # NV build server.
-alias Sn='S root@nv' # NV/Linux dev board.
-alias Snd='S dcor@nvdev' # NV/Linux dev VM account for buildG sysimg & toolchain.
-alias Snj='S janderson@nvdev' # NV/Linux dev VM account for xcompilG.
-alias S7='S root@$L'
-alias SL='S root@$L'
-alias SB7='S root@build-L7'
-alias Sd='S root@dropbox'
-alias Ss='S root@silverboy-sp1'
-alias Sp='S root@pp3'
-alias Sc='S root@cm'
-alias So='S root@oz-sp1'
-alias Sct='S tas-cm@cm'
-
-# UVU ssh aliases.
-alias Sj='S janderson@jobsub.priv.uvu.edu'
-alias Sjt='S janderson@jobsubtst.priv.uvu.edu'
-alias Sbt='S -oHostKeyAlgorithms=ssh-dss janderson@bantst-ssb8.priv.uvu.edu'
-alias Solv='S janderson@192.168.230.128' # Oracle Linux VM.
-
 # Other ssh aliases.
 alias S3='S pi@pi3' # Raspberry Pi 3
 alias S2='S pi@pi2' # Raspberry Pi 2
@@ -243,12 +189,12 @@ alias Rp='rsync -avz --partial --progress'
 
 # Web development aliases.
 alias serve='python3 -m http.server 8888 &'
-alias 8888='firefox http://localhost:8888/'
-alias 8080='firefox http://localhost:8080/'
-alias 8000='firefox http://localhost:8000/'
-alias 9999='firefox http://localhost:9999/'
-alias 9090='firefox http://localhost:9090/'
-alias 9000='firefox http://localhost:9000/'
+alias 8888='explorer.exe http://localhost:8888/'
+alias 8080='explorer.exe http://localhost:8080/'
+alias 8000='explorer.exe http://localhost:8000/'
+alias 9999='explorer.exe http://localhost:9999/'
+alias 9090='explorer.exe http://localhost:9090/'
+alias 9000='explorer.exe http://localhost:9000/'
 
 # Set up ssh agent so that we can automatically log onto and copy files to/from any machine
 # that has our public key as an authorized key.
@@ -257,7 +203,6 @@ alias ssha='eval $(ssh-agent); ssh-add'
 alias map='foreach ' # You are mapping arbitrary code onto each line.
 alias feach='foreach ' # Trailing space causes next word to be evaluated as an alias by bash.
 alias fe='foreach '
-
 
 alias pid='pgrep' # Process grep.  Lists all pids for running process names matching regexp.
 alias psg='ps aux|g' # Another process grep shorthand.
@@ -289,8 +234,6 @@ alias tab2space='expand --tabs=4' # Expand tabs to spaces.
 alias tf='tail -f' # Follow logs as they are written to.
 alias tgf='test-server.sh | grep ^FAIL'
 alias ~='cd ~'
-alias c:='cd /cygdrive/c'
-alias C:='cd /cygdrive/c'
 alias classpath="echo \$CLASSPATH | perl -pe 's/;/\n/g'"
 
 alias help='man'
@@ -306,11 +249,6 @@ alias uppercase='tr [:lower:] [:upper:]'
 alias uc='uppercase'
 alias lowercase='tr [:upper:] [:lower:]'
 alias lc='lowercase'
-# TO DO: titlecase.
-# alias titlecase='?'
-# TO DO: camelcase.
-# alias camelcase='?'
-# TO DO: randomcase.
 
 # Use these to get rid of extra trailing whitespace before Git commits.
 alias rtrim='sed -i "s/[[:space:]]*$//"'
@@ -336,10 +274,10 @@ alias v.v='vim ~/.vimrc'
 if [ -f ~/.vimrc_jeff ]; then
     alias v.v='vim ~/.vimrc_jeff'
 fi
-alias v.ab='vim ~/Dropbox/vim/abbreviations.vim'
-alias v.ms='vim ~/Dropbox/vim/misspellings.vim'
-alias v.s='v.ms'
-alias v.sp='v.ms'
+# alias v.ab='vim ~/Dropbox/vim/abbreviations.vim'
+# alias v.ms='vim ~/Dropbox/vim/misspellings.vim'
+# alias v.s='v.ms'
+# alias v.sp='v.ms'
 
 # alias si.v='cd ~/Dropbox; svn ci .vimrc -m' # Check in ~/.vimrc to SVN.
 alias v.g='vim ~/_gvimrc'
@@ -356,7 +294,6 @@ alias directory='dirname' # Gives you the directory part of a path.
 
 # alias shortcuts='bind -P'
 alias shortcuts='cat ~/bash_shortcuts.txt | less'
-alias chmx='chmod 755'
 alias chx='chmod 755'
 alias chr='chmod 644'
 alias rehash='hash -r' # Forget hashed command paths.
@@ -371,8 +308,6 @@ else
 fi
 
 alias ipa='ipaddress'
-
-
 
 # Pipe to system clipboard functionality.
 # TO DO: Implement for other OSes.  Allow piping from remote ssh'd system to local clipboard.
@@ -397,42 +332,10 @@ if [ "$CYGWIN" ]; then
 		fi
 	}
 	alias node=node_helper
-
 else
 	alias cb='echo "Not implemented on this OS yet."'
 	alias pcb='cat /dev/clip'
 fi
-
-
-# SVN aliases.  Subversion aliases.
-alias ss='svn_or_git_status'
-alias ss?=$'ss | g \'^[?]\' | ppe \'s/^[?]\s+//\''
-alias ss?a="ss? | 0 | x{0 svn add '{}@'" # Adds any untracked non-ignored files.
-set +o histexpand
-alias 'ss!d'="ss! | 0 | x{0 svn delete '{}@'"
-alias 'ss!'=$'ss | g \'^[!]\' | ppe \'s/^[!]\s+//\''
-set -o histexpand
-alias ssM=$'ss | g \'^[M]\' | ppe \'s/^[M]\s+//\''
-alias ssA=$'ss | g \'^[A]\' | ppe \'s/^[A]\s+//\''
-alias ssD=$'ss | g \'^[D]\' | ppe \'s/^[D]\s+//\''
-
-alias ssni='svn status --no-ignore' # Useful for whole filesystem/jail/sandbox checkins.
-
-alias si='svn commit'
-alias sim='svn commit . -m' # Commit cwd with message. 
-alias sa='svn add'
-alias so='svn checkout'
-alias sd='svn diff'
-alias sdl='svn delete'
-alias svu='svn update' # Since su is Unix 'switch user' or 'superuser' command.
-alias suv='svn update' # Sport Utility Vehicle.
-alias sl='svn log' # This lists all the commit log messages for a file.
-# Enable SVN keywords for the given files.
-alias sk='svn propset svn:keywords "Author Date Id Revision HeadURL"'
-alias signore='svn propedit svn:ignore .'
-alias svn_ignore='svn propedit svn:ignore .'
-alias ignore='svn propedit svn:ignore .'
-alias sx=$'svn propset svn:executable \'*\''
 
 # Git aliases.
 alias gs='git status'
@@ -449,7 +352,6 @@ alias gc='git commit'
 alias gc.='git commit .'
 alias go='git commit'
 alias gci='git commit'
-alias gommit='git commit'
 alias glone='git clone'
 alias gush='git push'
 alias push='git push'
@@ -465,7 +367,6 @@ alias cob='git checkout -b' # Create and checkout a new Git branch.
 alias cod='git checkout develop' # GitFlow.
 alias ci='git commit'
 alias ciam='git add -A; git commit -a -m'
-alias commit='git commit'
 
 # Scripting aliases.  Great for one liners.
 alias p='perl'
@@ -478,7 +379,7 @@ alias pie='perl -p -i -e'
 alias pieb='perl -p -i.bak -e'
 alias pibe='perl -p -i.bak -e'
 alias pnbe='perl -n -i.bak -e'
-alias py='python'
+alias py='python3'
 alias p3='python3'
 alias py3='python3'
 
@@ -504,12 +405,10 @@ alias vq='vim -q make.out' # Create and open Vim quick fix list of all warnings/
 alias mq='make distclean; qmake; m.'
 alias mqd='mq && . d' # Build and deploy digEcor Qt project.
 
-
 # Network aliases.
 # There is an 'ip' command on Linux machines that does something different.
 alias ipa=ipaddress
 alias ipaddy=ipaddress
-
 
 # Note that you have to do this as a function.  As a bash script, the cd would affect the subshell
 # invoked to run the script, not the calling shell.  A bash function runs in the same shell it is
@@ -526,60 +425,10 @@ alias cdw='cdwhich'
 alias tc='create_tgz' # Make a .tgz from a given directory.
 alias tl='tar tzvf' # List the contents of a .tgz file.
 
-# digEcor project directory navigation aliases
-alias cdprov='cd /srv/root/usr/src/player/provision/arm'
-alias prov='cd /srv/root/usr/src/player/provision/arm'
-alias libmcast='cd /srv/root/usr/src/player/mcastlib'
-alias mcastlib='cd /srv/root/usr/src/player/mcastlib'
-
-
 # Poor man's text-to-html.  I use this with the Pidgin digEcor development chat logs.
 # ppe 's/<[^>]+>//g' | pne 'print if $_ !~ /^ *$/'
 # cat log.html | text2html
 alias text2html=$'ppe \'s/<[^>]+>//g\' | pne \'print if $_ !~ /^ *$/\''
-
-
-# Set up Qt for Cygwin on my Dell XPS 15 Windows 7 Ultimate 64-bit laptop.
-# if [ "$HOSTNAME" == "XPS15" ]; then
-# Only Windows has COMSPEC env var set.
-if [ "$COMSPEC" ]; then
-	# There is a Cygwin package called libQtCore4-devel-4.5.3-1 that is already installed.
-    # Its qmake is qmake-qt4.
-    # It works with Cygwin g++ and Cygwin make.  Does NOT work with mingw.
-    alias qmake='qmake-qt4'
-    
-
-    # NOTE: None of this crap works.  To use the Windows-installed Qt, you must use mingw from a Windows command prompt.
-    # It won't work under Cygwin.
-
-    # These are the Qt-specific binaries that rely on mingw (Minimalist GNU on Windows).
-    # export PATH='/cygdrive/c/QtSDK/Desktop/Qt/4.7.4/mingw/bin':${PATH}
-
-    # These are the mingw binaries.  We'll put them at the end of the path since Cygwin already
-    # provides most of them and I want to prefer the Cygwin versions.  Not sure if intermixing will cause trouble.
-    # export PATH=${PATH}:'/cygdrive/c/QtSDK/mingw/bin'
-    # export PATH='/cygdrive/c/QtSDK/mingw/bin':${PATH}
-
-    # export QTDIR='/cygdrive/c/QtSDK/Desktop/Qt/4.7.4/mingw'
-    # export QTJAVA='/cygdrive/c/Program Files/Java/jre6/lib/ext/QTJava.zip'
-
-    # echo off
-    # echo Setting up environment for Qt usage...
-    # export QTDIR='C:\QtSDK\Desktop\Qt\4.7.4\mingw'
-    # set PATH=C:\QtSDK\mingw\bin;%PATH%
-    # set PATH=%QTDIR%\bin;%PATH%
-
-
-    # export LD_LIBRARY_PATH='/cygdrive/c/QtSDK/Desktop/Qt/4.7.4/mingw/lib'
-fi
-
-
-# Nyman uses this to check the connection status for reverse VPN from various servers around
-# the planet such as oz-sp1.
-if [ $(hostname) == "pp2" ]; then
-	alias gvpn='grep ^10\. /var/log/openvpn/openvpn-status.log*|cut -d: -f2|sort -t, -k2'
-fi
-
 
 # Shuts down or reboots and gets me out of ssh session so it doesn't jam.
 alias shn='shutdown -h now'
@@ -587,36 +436,7 @@ alias shne='shutdown -h now; exit'
 alias srne='shutdown -r now; exit'
 alias rex='reboot; exit'
 
-# For Glide dev.
-alias dcm='deploy_to_cm'
 alias b='build_and_deploy'
-
-# Restarts/stops/starts the Glide CMC.
-export DJANGO_SETTINGS_MODULE=cm.settings
-alias restartcmc='supervisorctl restart glide-cmc; killall chromium-browser'
-alias stopcmc='supervisorctl stop glide-cmc; killall chromium-browser'
-alias startcmc='supervisorctl stop glide-cmc; killall chromium-browser'
-alias kfc='killall chromium-browser' # Kill freakin' Chromium.
-
-# Messages you can send to the Glide CM-MC.
-alias rbx='printf "RBX\n" > /dev/ttyACM0'
-alias rbn='printf "RBN\n" > /dev/ttyACM0'
-alias rbf='printf "RBF\n" > /dev/ttyACM0'
-
-# Really sync. 
-alias sss='sync; sleep 1; sync; sleep 1; sync'
-
-# NV dev.  Yocto, bitbake, etc.
-# Make a clean shell for doing bitbake.
-alias bitbash='bash --rcfile ~/.bashrc_yocto'
-
-# thefuck is not supported on Cygwin.
-if [ -z "$CYGWIN" ]; then
-	tfpath=$(type -p thefuck-alias)
-	if [ -x "$tfpath" ]; then
-		eval "$(thefuck-alias fix)"
-	fi
-fi
 
 # Get command history for the 11g version of SQL*Plus that I use.
 alias sqlplus='rlwrap sqlplus'
