@@ -9,23 +9,13 @@
 
 # PRE: nullglob is not set.
 
-# TO DO: Define useful aliases for all easily typeable single characters.
-
-# APT aliases.
-alias agi='apt-get install'
-alias agp='apt-get purge'
-alias agr='apt-get remove'
-alias agu='apt-get update'
-alias agug='apt-get upgrade'
-alias acs='apt-cache search'
-
 alias G='query_google'
 
 alias td='todo'
 alias t='todo'
 alias @W='send_waiting_e-mail'
 
-alias .m='cdm'
+# alias .m='cdm'
 
 # Aliases are expanded before globs, thus you can do this treachery.
 # This turns globbing off and then calls our _calc helper function.
@@ -177,10 +167,6 @@ alias sudo='sudo '
 alias s='sudo ' # Allow use of aliases with sudo (trailing space causes this).
 alias S='ssh' # Along with my ssh(), I can now say 'S 118'.  Bam!
 
-# Other ssh aliases.
-alias S3='S pi@pi3' # Raspberry Pi 3
-alias S2='S pi@pi2' # Raspberry Pi 2
-
 alias C='scp'
 alias CJ='scp_to_desktop'
 
@@ -227,12 +213,10 @@ alias vw='vimwhich'
 alias veh='vim /etc/hosts'
 alias vkh='vim ~/.ssh/known_hosts'
 alias vmc='cd ~; vim My\ Configuration.txt'
-alias cmc='git add My\ Configuration.txt; git ci My\ Configuration.txt'
 
 alias wrap='fmt' # Wraps long text lines.
 alias tab2space='expand --tabs=4' # Expand tabs to spaces.
 alias tf='tail -f' # Follow logs as they are written to.
-alias tgf='test-server.sh | grep ^FAIL'
 alias ~='cd ~'
 alias classpath="echo \$CLASSPATH | perl -pe 's/;/\n/g'"
 
@@ -256,9 +240,6 @@ alias rstrip='sed -i "s/[[:space:]]*$//"'
 
 # Meta-efficiency shortcuts.  They make it more efficient to become more efficient!
 alias v.b='vim ~/.bashrc'
-if [ -f ~/.bashrc_jeff ]; then
-    alias v.b='vim ~/.bashrc_jeff'
-fi
 alias c.b='git add ~/.bashrc; git commit'
 alias v.a='vim ~/projects/bash-glory/src/interactive/aliases.sh'
 alias s.a='source ~/projects/bash-glory/src/interactive/aliases.sh'
@@ -271,9 +252,6 @@ alias s.b='source ~/.bashrc'
 # alias si.b='cd ~/Dropbox; svn ci .bashrc -m' # Check in ~/.bashrc to SVN.
 
 alias v.v='vim ~/.vimrc'
-if [ -f ~/.vimrc_jeff ]; then
-    alias v.v='vim ~/.vimrc_jeff'
-fi
 # alias v.ab='vim ~/Dropbox/vim/abbreviations.vim'
 # alias v.ms='vim ~/Dropbox/vim/misspellings.vim'
 # alias v.s='v.ms'
@@ -343,8 +321,6 @@ alias gss='git status -s' # Short status.  Similar to SVN output.
 alias gca='git commit -a' # Adds all changed files under cwd tree and commits them.
 alias ga='git add'
 alias ga.='git add .'
-alias gad='git add'
-alias gadd='git add'
 alias add='git add'
 alias unstage='git unstage'
 alias gco='git checkout'
@@ -352,10 +328,7 @@ alias gc='git commit'
 alias gc.='git commit .'
 alias go='git commit'
 alias gci='git commit'
-alias glone='git clone'
-alias gush='git push'
 alias push='git push'
-alias gull='git pull'
 alias pull='git_pull'
 alias gpr='git pull --rebase'
 alias gb='git branch'
@@ -364,9 +337,7 @@ alias branch='git branch'
 alias checkout='git checkout'
 alias co='git checkout'
 alias cob='git checkout -b' # Create and checkout a new Git branch.
-alias cod='git checkout develop' # GitFlow.
 alias ci='git commit'
-alias ciam='git add -A; git commit -a -m'
 
 # Scripting aliases.  Great for one liners.
 alias p='perl'
@@ -380,7 +351,6 @@ alias pieb='perl -p -i.bak -e'
 alias pibe='perl -p -i.bak -e'
 alias pnbe='perl -n -i.bak -e'
 alias py='python3'
-alias p3='python3'
 alias py3='python3'
 
 # Regular Expression Debugger
@@ -392,18 +362,17 @@ alias rxrx="perl -MRegexp::Debugger -E 'Regexp::Debugger::rxrx(@ARGV)'"
 alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 
 # Build process aliases.
-# TO DO: Exit status below seems to be reporting that of tee, not make.
-alias m.='time make 2>&1 | tee make.out; printf "\nExit status: $?\n"'
-alias m.c='make clean'
-alias m.cd='make distclean'
-alias m.dc='make distclean'
-alias qm='qmake'
-alias qmp='qmake -project'
-alias qm.p='qmake -project'
-alias xs='echo $?' # Exit status.
-alias vq='vim -q make.out' # Create and open Vim quick fix list of all warnings/errors from last build.
-alias mq='make distclean; qmake; m.'
-alias mqd='mq && . d' # Build and deploy digEcor Qt project.
+# alias m.='time make 2>&1 | tee make.out; printf "\nExit status: $?\n"'
+# alias m.c='make clean'
+# alias m.cd='make distclean'
+# alias m.dc='make distclean'
+# alias qm='qmake'
+# alias qmp='qmake -project'
+# alias qm.p='qmake -project'
+# alias xs='echo $?' # Exit status.
+# alias vq='vim -q make.out' # Create and open Vim quick fix list of all warnings/errors from last build.
+# alias mq='make distclean; qmake; m.'
+# alias mqd='mq && . d' # Build and deploy digEcor Qt project.
 
 # Network aliases.
 # There is an 'ip' command on Linux machines that does something different.
@@ -440,9 +409,5 @@ alias b='build_and_deploy'
 
 # Get command history for the 11g version of SQL*Plus that I use.
 alias sqlplus='rlwrap sqlplus'
-
-# Windows aliases.
-alias vlc='"/cygdrive/c/Program Files (x86)/VideoLAN/VLC/vlc.exe"'
-alias itunes='/cygdrive/c/Program\ Files/iTunes/iTunes.exe &' # Windows specific.
 
 
