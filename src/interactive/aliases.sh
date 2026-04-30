@@ -16,6 +16,7 @@ alias w='which'
 alias pi='pip3 install'
 
 alias G='query_google'
+alias X='exit'
 
 alias td='todo'
 alias t='todo'
