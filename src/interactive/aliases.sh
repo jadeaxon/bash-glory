@@ -319,7 +319,27 @@ if [ "$CYGWIN" ]; then
 	alias node=node_helper
 else
 	alias cb='echo "Not implemented on this OS yet."'
-	alias pcb='cat /dev/clip'
+	# alias pcb='cat /dev/clip'
+fi
+
+if (( WSL )); then
+	alias cb='clipboard_function'
+	alias clip='clipboard_function'
+	alias clipboard='clipboard_function'
+	# alias cbp='powershell.exe -Command "Get-Clipboard" | sed "s/\r$//"'
+	# alias pcb='cat /dev/clip' # Nope.
+	
+	clipboard_function() {
+		if [ ! -t 0 ]; then
+			# Copy piped in text to Windows clipboard.
+			# Doesn't handle multiline text due to UTF-16/UTF-8 mismatch.	
+			# cat - | clip.exe
+			powershell.exe -NoProfile -Command "Set-Clipboard -Value ([Console]::In.ReadToEnd())"
+		else
+			# Paste Windows clipboard to stdout.
+			powershell.exe -Command "Get-Clipboard" | sed "s/\r$//"
+		fi
+	}
 fi
 
 # Git aliases.
