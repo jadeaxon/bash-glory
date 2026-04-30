@@ -9,6 +9,7 @@
 
 # PRE: nullglob is not set.
 
+alias a='alias | perl -p -e "s/^alias //"' # Get a list of all aliases.
 alias i='sudo apt install'
 
 # Overwrites the w command, but I never use it.
@@ -53,7 +54,7 @@ alias dpgk='sudo dpkg' # Misspelling.
 alias di='sudo dpkg -i'
 alias dups='uniq -d'
 alias unmount='umount' # More natural.
-alias aliases='alias' # To get a list of all aliases.
+alias aliases='alias | perl -p -e "s/^alias //"' # Get a list of all aliases.
 alias cls='clear' # Clean the screen.
 alias ll='my_ls'
 alias l='my_ls'
