@@ -353,6 +353,11 @@ alias pnbe='perl -n -i.bak -e'
 alias py='python3'
 alias py3='python3'
 
+# Virtual environment for Pyhton development.
+alias ve='python3 -m venv .venv'
+alias va='source .venv/bin/activate'
+alias vd='deactivate'
+
 # Regular Expression Debugger
 # Allows you to visually step through a regexp matching against a string.
 # cpan
