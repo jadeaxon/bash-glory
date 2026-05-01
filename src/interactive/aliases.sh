@@ -15,6 +15,8 @@ alias i='sudo apt install'
 # Overwrites the w command, but I never use it.
 alias w='which'
 alias pi='pip3 install'
+alias pt='pytest'
+alias me='whoami'
 
 alias G='query_google'
 alias X='exit'
