@@ -104,6 +104,7 @@ alias c:='cd ${C_DIR}'
 alias C:='cd ${C_DIR}'
 
 alias cdd='cd ~/Desktop'
+alias cddt='cd ~/Desktop'
 # alias cddb='cd ~/Dropbox'
 alias cddl='cd ~/Downloads'
 # alias cdo='cd ~/Dropbox/Organization'
