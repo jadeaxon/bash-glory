@@ -74,9 +74,7 @@ create_tgz() {
 	else
 		echo "create_tgz(): Argument must be a single directory."
 	fi
-
 } # create_tgz()
-
 
 # Either prints out the absolute path of a file, or print the PATH env var in a line-by-line form.
 # path() { # For some reason, my Linux VM chokes on this style of function declaration just here.
@@ -88,8 +86,15 @@ function path {
 		# Print PATH env var to stdout line-by-line.
 		echo $PATH | perl -pe 's/:/\n/g' | perl -pe "s@$HOME@~@"
 	fi
+} # path()
 
-}
+# Make a symlink in current directory to target with target basename as name.
+# lns /path/to/file.ext => ln -s /path/to/file.ext file
+lns() {
+	file=$(basename "$1")
+	link=${file%.*} # Remove extension
+	ln -s "$1" $link
+} # lns() 
 
 
 #------------------------------------------------------------------------------------------------------------------
@@ -355,5 +360,6 @@ mount_LFS() {(
 #==============================================================================
 # Tests
 #==============================================================================
+
 
 
