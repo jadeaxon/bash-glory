@@ -25,6 +25,8 @@ alias td='todo'
 alias t='todo'
 alias @W='send_waiting_e-mail'
 
+alias decolor='strip_ansi_color'
+
 # alias .m='cdm'
 
 # Aliases are expanded before globs, thus you can do this treachery.
