@@ -89,15 +89,15 @@ build_and_deploy() {
 
 
 # alias a='./a' # For use with Hello/C++ projects.  Just type 'a' after 'm.'.
-a() {
-	if [ -f './a' ]; then
-		./a # For Linux
-	elif [ -f './a.exe' ]; then
-		./a.exe # For Cygwin
-	else 
-		echo "Neither a nor a.exe exist here."
-	fi
-}
+#a() {
+#	if [ -f './a' ]; then
+#		./a # For Linux
+#	elif [ -f './a.exe' ]; then
+#		./a.exe # For Cygwin
+#	else 
+#		echo "Neither a nor a.exe exist here."
+#	fi
+#}
 
 
 #------------------------------------------------------------------------------
