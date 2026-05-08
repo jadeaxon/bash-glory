@@ -16,6 +16,7 @@ open_explorer() {
 	else
 		explorer "$@"
 	fi
+	return 0
 }
 
 
