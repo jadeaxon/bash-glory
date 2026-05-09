@@ -387,7 +387,7 @@ alias pibe='perl -p -i.bak -e'
 alias pnbe='perl -n -i.bak -e'
 alias py='python3'
 alias py3='python3'
-alias Y='pype'
+alias y='pype'
 
 # Virtual environment for Pyhton development.
 alias ve='python3 -m venv .venv'
